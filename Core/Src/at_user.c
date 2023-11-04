@@ -1,8 +1,10 @@
 #include "at_user.h"
 
+#include <string.h>
+#include <stdlib.h>
+
 #include "usart.h"
 #include "rtc.h"
-#include "string.h"
 static Stream at_user_stream_device;
 static Stream* sdev = &at_user_stream_device;
 
@@ -64,8 +66,10 @@ static At_Err_t at_user_AT_Reboot(At_Param_t param)
 }
 
 static At_Err_t _at_user_AT_Get_Time(At_Param_t param);
+static At_Err_t _at_user_AT_Set_Time(At_Param_t param);
 static struct At_State _at_user_Time_Table[] = {
 	{ "show", AT_TYPE_CMD, _at_user_AT_Get_Time },
+	{ "sett", AT_TYPE_CMD, _at_user_AT_Set_Time },
 	{ AT_LABLE_TAIL, AT_TYPE_NULL, nullptr },
 };
 static At _at_Time;
@@ -80,6 +84,25 @@ static At_Err_t _at_user_AT_Get_Time(At_Param_t param)
 	_at_Time.printf(&_at_Time, "%04d-%02d-%02d %s %02d:%02d:%02d\r\n",
 		(int)date.Year - RTC_USER_DATE_YEAR_DELTA, date.Month, date.Date, weekDay[date.WeekDay],
 		time.Hours, time.Minutes, time.Seconds);
+	return AT_EOK;
+}
+
+static At_Err_t _at_user_AT_Set_Time(At_Param_t param)
+{
+	_at_Time.printf(&_at_Time, "param->argc=%d", (int)param->argc);
+	if ((!param->argc) || (param->argc > 3)) return AT_ERROR;
+	
+	RTC_TimeTypeDef time = { 0 };
+	if (param->argc >= 1) {
+		time.Hours = (uint8_t)atoi(param->argv[0]);
+	}
+	if (param->argc >= 2) {
+		time.Minutes = (uint8_t)atoi(param->argv[1]);
+	}
+	if (HAL_RTC_SetTime(&hrtc, &time, RTC_FORMAT_BIN) != HAL_OK) {
+		Error_Handler();
+	}
+	
 	return AT_EOK;
 }
 
@@ -109,7 +132,6 @@ static At_Err_t at_user_AT_Time(At_Param_t param)
 		str[cpy_num] = ' ';
 		cpy_num += 1;
 	}
-	str[len] = 0;
 	At_Err_t err = _at_Time.handle(&_at_Time, str);
 	at_free(str);
 	

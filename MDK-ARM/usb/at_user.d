@@ -5,8 +5,9 @@ usb/at_user.o: ..\Core\Src\at_user.c ..\Core\Inc\at_user.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
   ..\Middlewares\Third_Party\At\include\at_mem.h \
   ..\Middlewares\Third_Party\At\include\at_stream_device.h \
-  ..\Core\Inc\usart.h ..\Core\Inc\main.h \
-  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h ..\Core\Inc\usart.h \
+  ..\Core\Inc\main.h ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h \
   ..\Core\Inc\stm32f1xx_hal_conf.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h \
@@ -34,4 +35,4 @@ usb/at_user.o: ..\Core\Src\at_user.c ..\Core\Inc\at_user.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rtc_ex.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_spi.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h \
-  ..\Core\Inc\rtc.h D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h
+  ..\Core\Inc\rtc.h
