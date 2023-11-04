@@ -22,6 +22,18 @@
 
 /* USER CODE BEGIN 0 */
 
+#define RTC_USER_TIME_SET_BKP_BR		RTC_BKP_DR10
+#define RTC_USER_TIME_SET_BKP_BR_VAL	(0x5F5F)
+
+#define RTC_USER_TIME_HOUR_BKP_BR		RTC_BKP_DR7
+#define RTC_USER_TIME_MINUTE_BKP_BR		RTC_BKP_DR6
+#define RTC_USER_TIME_SECOND_BKP_BR		RTC_BKP_DR5
+
+#define RTC_USER_DATE_YEAR_BKP_BR		RTC_BKP_DR4
+#define RTC_USER_DATE_MONTH_BKP_BR		RTC_BKP_DR3
+#define RTC_USER_DATE_DATE_BKP_BR		RTC_BKP_DR2
+#define RTC_USER_DATE_WDATE_BKP_BR		RTC_BKP_DR1
+
 #define YEAR ((((__DATE__ [7] - '0') * 10 + (__DATE__ [8] - '0')) * 10 \
     + (__DATE__ [9] - '0')) * 10 + (__DATE__ [10] - '0'))
 // January February March April May June July August September October November December
@@ -107,7 +119,8 @@ void MX_RTC_Init(void)
 				time.Hours, time.Minutes, time.Seconds);
   }
   
-  if (0) {
+  if (HAL_RTCEx_BKUPRead(&hrtc, RTC_USER_TIME_SET_BKP_BR) != RTC_USER_TIME_SET_BKP_BR_VAL) {
+	  HAL_RTCEx_BKUPWrite(&hrtc, RTC_USER_TIME_SET_BKP_BR, RTC_USER_TIME_SET_BKP_BR_VAL);
 	  RTC_TimeTypeDef time;
 	  time.Hours = HOUR;
 	  time.Minutes = MINUTE;
@@ -190,15 +203,6 @@ void HAL_RTC_MspDeInit(RTC_HandleTypeDef* rtcHandle)
 }
 
 /* USER CODE BEGIN 1 */
-
-#define RTC_USER_TIME_HOUR_BKP_BR		RTC_BKP_DR7
-#define RTC_USER_TIME_MINUTE_BKP_BR		RTC_BKP_DR6
-#define RTC_USER_TIME_SECOND_BKP_BR		RTC_BKP_DR5
-
-#define RTC_USER_DATE_YEAR_BKP_BR		RTC_BKP_DR4
-#define RTC_USER_DATE_MONTH_BKP_BR		RTC_BKP_DR3
-#define RTC_USER_DATE_DATE_BKP_BR		RTC_BKP_DR2
-#define RTC_USER_DATE_WDATE_BKP_BR		RTC_BKP_DR1
 
 HAL_StatusTypeDef rtc_user_time_write_bkp(RTC_TimeTypeDef* time)
 {

@@ -3687,9 +3687,9 @@
       </Doc>
       <Doc>
         <Name>../Core/Src/rtc.c</Name>
-        <ColumnNumber>7</ColumnNumber>
-        <TopLine>94</TopLine>
-        <CurrentLine>110</CurrentLine>
+        <ColumnNumber>89</ColumnNumber>
+        <TopLine>110</TopLine>
+        <CurrentLine>123</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
