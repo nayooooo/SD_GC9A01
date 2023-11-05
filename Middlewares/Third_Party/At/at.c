@@ -370,15 +370,15 @@ At_Err_t At_Create(
     va_start(args, argc);
     size_t temp = argc;
     size_t readString_len; size_t param_max_num; char terminator;
-    readString_len = va_arg(args, size_t); if (--temp) {
+    readString_len = va_arg(args, size_t); if (!(--temp)) {
         va_end(args);
         return _At_Create(this, atTable, input_dev, output_dev, readString_len, AT_PARAM_MAX_NUM, AT_TERMINATOR_DEFAULT);
     }
-    param_max_num = va_arg(args, size_t); if (--temp) {
+    param_max_num = va_arg(args, size_t); if (!(--temp)) {
         va_end(args);
         return _At_Create(this, atTable, input_dev, output_dev, readString_len, param_max_num, AT_TERMINATOR_DEFAULT);
     }
-    terminator = va_arg(args, int); if (--temp) {  // dangerous at "va_arg(args, char)", the "char"
+    terminator = va_arg(args, int); if (!(--temp)) {  // dangerous at "va_arg(args, char)", the "char"
         va_end(args);
         return _At_Create(this, atTable, input_dev, output_dev, readString_len, param_max_num, terminator);
     }
@@ -440,11 +440,11 @@ At_Err_t At_Init(
     va_start(args, argc);
     size_t temp = argc;
     size_t param_max_num; char terminator;
-    param_max_num = va_arg(args, size_t); if (--temp) {
+    param_max_num = va_arg(args, size_t); if (!(--temp)) {
         va_end(args);
         return _At_Init(this, atTable, input_dev, output_dev, readString, readString_len, param_max_num, AT_TERMINATOR_DEFAULT);
     }
-    terminator = va_arg(args, int); if (--temp) {  // dangerous at "va_arg(args, char)", the "char"
+    terminator = va_arg(args, int); if (!(--temp)) {  // dangerous at "va_arg(args, char)", the "char"
         va_end(args);
         return _At_Init(this, atTable, input_dev, output_dev, readString, readString_len, param_max_num, terminator);
     }

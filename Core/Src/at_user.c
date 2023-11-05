@@ -67,9 +67,11 @@ static At_Err_t at_user_AT_Reboot(At_Param_t param)
 
 static At_Err_t _at_user_AT_Get_Time(At_Param_t param);
 static At_Err_t _at_user_AT_Set_Time(At_Param_t param);
+static At_Err_t _at_user_AT_Set_Date(At_Param_t param);
 static struct At_State _at_user_Time_Table[] = {
 	{ "show", AT_TYPE_CMD, _at_user_AT_Get_Time },
 	{ "sett", AT_TYPE_CMD, _at_user_AT_Set_Time },
+	{ "setd", AT_TYPE_CMD, _at_user_AT_Set_Date },
 	{ AT_LABLE_TAIL, AT_TYPE_NULL, nullptr },
 };
 static At _at_Time;
@@ -89,10 +91,12 @@ static At_Err_t _at_user_AT_Get_Time(At_Param_t param)
 
 static At_Err_t _at_user_AT_Set_Time(At_Param_t param)
 {
-	_at_Time.printf(&_at_Time, "param->argc=%d", (int)param->argc);
 	if ((!param->argc) || (param->argc > 3)) return AT_ERROR;
 	
 	RTC_TimeTypeDef time = { 0 };
+	if (HAL_RTC_GetTime(&hrtc, &time, RTC_FORMAT_BIN) != HAL_OK) {
+		Error_Handler();
+	}
 	if (param->argc >= 1) {
 		time.Hours = (uint8_t)atoi(param->argv[0]);
 	}
@@ -102,6 +106,45 @@ static At_Err_t _at_user_AT_Set_Time(At_Param_t param)
 	if (HAL_RTC_SetTime(&hrtc, &time, RTC_FORMAT_BIN) != HAL_OK) {
 		Error_Handler();
 	}
+	
+	return AT_EOK;
+}
+
+static At_Err_t _at_user_AT_Set_Date(At_Param_t param)
+{
+	if ((!param->argc) || (param->argc > 3)) return AT_ERROR;
+	if (param->argc != 2) return AT_ERROR;
+	
+	RTC_DateTypeDef date = { 0 };
+	if (HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN) != HAL_OK) {
+		Error_Handler();
+	}
+	
+	size_t cmp_len = max(strlen(param->argv[0]), strlen("year"));
+	if (!at_memcmp(param->argv[0], "year", cmp_len)) {
+		date.Year = (uint8_t)(atoi(param->argv[1]) + RTC_USER_DATE_YEAR_DELTA);
+		goto cmp_out;
+	}
+	cmp_len = max(strlen(param->argv[0]), strlen("month"));
+	if (!at_memcmp(param->argv[0], "month", cmp_len)) {
+		date.Month = (uint8_t)atoi(param->argv[1]);
+		goto cmp_out;
+	}
+	cmp_len = max(strlen(param->argv[0]), strlen("date"));
+	if (!at_memcmp(param->argv[0], "date", cmp_len)) {
+		date.Date = (uint8_t)atoi(param->argv[1]);
+		goto cmp_out;
+	}
+	
+	return AT_ERROR;
+	
+cmp_out:
+	
+	if (HAL_RTC_SetDate(&hrtc, &date, RTC_FORMAT_BIN) != HAL_OK) {
+		Error_Handler();
+	}
+	HAL_StatusTypeDef rtc_user_date_write_bkp(RTC_DateTypeDef* date);
+	rtc_user_date_write_bkp(&date);
 	
 	return AT_EOK;
 }
@@ -205,6 +248,6 @@ At_Err_t at_user_init(void)
 	if (err != AT_EOK) return err;
 	err = At_Create(&_at_LED, _at_user_LED_Table, sdev, sdev, 1, 10);
 	if (err != AT_EOK) return err;
-	err = At_Create(&_at_Time, _at_user_Time_Table, sdev, sdev, 1, 10);
+	err = At_Create(&_at_Time, _at_user_Time_Table, sdev, sdev, 1, 50);
 	return err;
 }
