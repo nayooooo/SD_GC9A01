@@ -103,6 +103,19 @@ int main(void)
   
   printf("Please ensure that the power outage duration is less than 24 hours.\r\n");
   
+  printf("================ BKP start ================\r\n");
+  printf("RTC_BKP_DR1=0x%04X\r\n", 0xFFFF & HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR1));
+  printf("RTC_BKP_DR2=0x%04X\r\n", 0xFFFF & HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR2));
+  printf("RTC_BKP_DR3=0x%04X\r\n", 0xFFFF & HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR3));
+  printf("RTC_BKP_DR4=0x%04X\r\n", 0xFFFF & HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR4));
+  printf("RTC_BKP_DR5=0x%04X\r\n", 0xFFFF & HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR5));
+  printf("RTC_BKP_DR6=0x%04X\r\n", 0xFFFF & HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR6));
+  printf("RTC_BKP_DR7=0x%04X\r\n", 0xFFFF & HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR7));
+  printf("RTC_BKP_DR8=0x%04X\r\n", 0xFFFF & HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR8));
+  printf("RTC_BKP_DR9=0x%04X\r\n", 0xFFFF & HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR9));
+  printf("RTC_BKP_DR10=0x%04X\r\n", 0xFFFF & HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR10));
+  printf("================= BKP end =================\r\n");
+  
   my_mem_init(0);
   if (at_user_init() == AT_EOK) {
 	  printf("at user initialize ok!\r\n");
