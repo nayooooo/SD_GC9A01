@@ -105,53 +105,53 @@ void MX_RTC_Init(void)
   }
   /* USER CODE BEGIN RTC_Init 2 */
   
-//  if (1) {
-//	  const char* weekDay[] = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
-//	  RTC_TimeTypeDef time;
-//	  RTC_DateTypeDef date;
-//	  if (HAL_RTC_GetTime(&hrtc, &time, RTC_FORMAT_BIN) != HAL_OK) {
-//		  Error_Handler();
-//	  }
-//	  rtc_user_date_read_bkp(&date);
-//	  #include <stdio.h>
-//	  printf("Last power outage on: \r\n");
-//	  printf("\t%04d-%02d-%02d %s %02d:%02d:%02d\r\n",
-//				(int)date.Year - RTC_USER_DATE_YEAR_DELTA, date.Month, date.Date, weekDay[date.WeekDay],
-//				time.Hours, time.Minutes, time.Seconds);
-//  }
-//  
-//  if (HAL_RTCEx_BKUPRead(&hrtc, RTC_USER_TIME_SET_BKP_BR) != RTC_USER_TIME_SET_BKP_BR_VAL) {
-//	  HAL_RTCEx_BKUPWrite(&hrtc, RTC_USER_TIME_SET_BKP_BR, RTC_USER_TIME_SET_BKP_BR_VAL);
-//	  RTC_TimeTypeDef time;
-//	  time.Hours = HOUR;
-//	  time.Minutes = MINUTE;
-//	  time.Seconds = SECOND;
-//	  if (HAL_RTC_SetTime(&hrtc, &time, RTC_FORMAT_BIN) != HAL_OK) {
-//		  Error_Handler();
-//	  }
-//	  rtc_user_time_write_bkp(&time);
-//	  RTC_DateTypeDef date;
-//	  date.Year = (uint8_t)(YEAR + RTC_USER_DATE_YEAR_DELTA);
-//	  date.Month = MONTH;
-//	  date.Date = DAY;
-//	  date.WeekDay = rtc_user_get_wdate(&date);
-//	  if (HAL_RTC_SetDate(&hrtc, &date, RTC_FORMAT_BIN) != HAL_OK) {
-//		  Error_Handler();
-//	  }
-//	  rtc_user_date_write_bkp(&date);
-//  }
-//  if (1) {
-//	  RTC_DateTypeDef date;
-//	  rtc_user_date_read_bkp(&date);
-//	  if (HAL_RTC_SetDate(&hrtc, &date, RTC_FORMAT_BIN) != HAL_OK) {
-//		  Error_Handler();
-//	  }
-//	  rtc_user_calibration_date();  // 先想办法将时间保存下来
-//	  if (HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN) != HAL_OK) {
-//		  Error_Handler();
-//	  }
-//	  rtc_user_date_write_bkp(&date);
-//  }
+  if (1) {
+	  const char* weekDay[] = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+	  RTC_TimeTypeDef time;
+	  RTC_DateTypeDef date;
+	  if (HAL_RTC_GetTime(&hrtc, &time, RTC_FORMAT_BIN) != HAL_OK) {
+		  Error_Handler();
+	  }
+	  rtc_user_date_read_bkp(&date);
+	  #include <stdio.h>
+	  printf("Last power outage on: \r\n");
+	  printf("\t%04d-%02d-%02d %s %02d:%02d:%02d\r\n",
+				(int)date.Year - RTC_USER_DATE_YEAR_DELTA, date.Month, date.Date, weekDay[date.WeekDay],
+				time.Hours, time.Minutes, time.Seconds);
+  }
+  
+  if (HAL_RTCEx_BKUPRead(&hrtc, RTC_USER_TIME_SET_BKP_BR) != RTC_USER_TIME_SET_BKP_BR_VAL) {
+	  HAL_RTCEx_BKUPWrite(&hrtc, RTC_USER_TIME_SET_BKP_BR, RTC_USER_TIME_SET_BKP_BR_VAL);
+	  RTC_TimeTypeDef time;
+	  time.Hours = HOUR;
+	  time.Minutes = MINUTE;
+	  time.Seconds = SECOND;
+	  if (HAL_RTC_SetTime(&hrtc, &time, RTC_FORMAT_BIN) != HAL_OK) {
+		  Error_Handler();
+	  }
+	  rtc_user_time_write_bkp(&time);
+	  RTC_DateTypeDef date;
+	  date.Year = (uint8_t)(YEAR + RTC_USER_DATE_YEAR_DELTA);
+	  date.Month = MONTH;
+	  date.Date = DAY;
+	  date.WeekDay = rtc_user_get_wdate(&date);
+	  if (HAL_RTC_SetDate(&hrtc, &date, RTC_FORMAT_BIN) != HAL_OK) {
+		  Error_Handler();
+	  }
+	  rtc_user_date_write_bkp(&date);
+  }
+  if (1) {
+	  RTC_DateTypeDef date;
+	  rtc_user_date_read_bkp(&date);
+	  if (HAL_RTC_SetDate(&hrtc, &date, RTC_FORMAT_BIN) != HAL_OK) {
+		  Error_Handler();
+	  }
+	  rtc_user_calibration_date();  // 先想办法将时间保存下来
+	  if (HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN) != HAL_OK) {
+		  Error_Handler();
+	  }
+	  rtc_user_date_write_bkp(&date);
+  }
 
   /* USER CODE END RTC_Init 2 */
 
