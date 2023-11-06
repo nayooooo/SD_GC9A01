@@ -15,6 +15,9 @@
   *
   ******************************************************************************
   */
+  
+#include "rtc.h"
+  
 /* USER CODE END Header */
 #include "fatfs.h"
 
@@ -51,12 +54,12 @@ DWORD get_fattime(void)
 	HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
 	HAL_RTC_GetTime(&hrtc, &time, RTC_FORMAT_BIN);
 	DWORD timeStamp = 0x00000000;
-	timeStamp |= (uint8_t)date.Year; timeStamp <<= 4;
+	timeStamp |= (uint8_t)((int)date.Year - RTC_USER_DATE_YEAR_DELTA - 1980); timeStamp <<= 4;
 	timeStamp |= (uint8_t)date.Month; timeStamp <<= 5;
 	timeStamp |= (uint8_t)date.Date; timeStamp <<= 5;
 	timeStamp |= (uint8_t)time.Hours; timeStamp <<= 6;
 	timeStamp |= (uint8_t)time.Minutes; timeStamp <<= 5;
-	timeStamp |= (uint8_t)(time.Seconds / 2);
+	timeStamp |= (uint8_t)time.Seconds >> 1;
 	return timeStamp;
   /* USER CODE END get_fattime */
 }

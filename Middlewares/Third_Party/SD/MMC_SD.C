@@ -354,6 +354,33 @@ u8 SD_WriteDisk(u8*buf,u32 sector,u8 cnt)
 	return r1;//
 }	
 
+#include <stdio.h>
+int MMC_SD_Card_Init(void)
+{
+	u8 r1;
+	u8 err_times = 0;
+	while ((r1 = SD_Init()) != MMC_SDCard_Ready) {
+		err_times++;
+		if (err_times >= 50) return -1;
+		printf("SD initialize error code: 0x%2X\r\n", r1);
+		HAL_Delay(500);
+		printf("Please Check!\r\n");
+		HAL_Delay(500);
+	}
+	printf("SD initialize success!\r\n");
+//	printf("=================== SD information start ===================\r\n");
+//	u8 id[16];
+//	SD_GetCID(id);
+//	printf("SD CID: 0x"); for (int i = 0; i < 16; i++) printf("%02X", id[i]); printf("\r\n");
+//	SD_GetCSD(id);
+//	printf("SD CSD: 0x"); for (int i = 0; i < 16; i++) printf("%02X", id[i]); printf("\r\n");
+//	printf("SD Card Sectors: %d\r\n", (int)SD_GetSectorCount());
+//	printf("SD Card Capacity: %.2fGB\r\n", (float)SD_GetSectorCount() * 512 / 1024 / 1024 / 1024);
+//	printf("==================== SD information end ====================\r\n");
+	
+	return 0;
+}
+
 
 
 

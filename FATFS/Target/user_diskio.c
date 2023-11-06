@@ -36,6 +36,9 @@
 #include <string.h>
 #include "ff_gen_drv.h"
 
+#include "user_diskio.h"
+#include "mmc_sd.h"
+
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 
@@ -82,6 +85,21 @@ DSTATUS USER_initialize (
 {
   /* USER CODE BEGIN INIT */
     Stat = STA_NOINIT;
+	switch (pdrv)
+	{
+	case SD_PDRV:
+		if (MMC_SD_Card_Init()) {
+			Stat = STA_NODISK;
+			break;
+		}
+		#include "fatfs.h"
+		memcpy(USERPath, "sd", 2);
+		Stat = USER_status(pdrv);
+		break;
+	default:
+		Stat = STA_NOINIT;
+		break;
+	}
     return Stat;
   /* USER CODE END INIT */
 }
@@ -97,6 +115,15 @@ DSTATUS USER_status (
 {
   /* USER CODE BEGIN STATUS */
     Stat = STA_NOINIT;
+	switch (pdrv)
+	{
+	case SD_PDRV:
+		Stat = RES_OK;
+		break;
+	default:
+		Stat = STA_NOINIT;
+		break;
+	}
     return Stat;
   /* USER CODE END STATUS */
 }
@@ -117,7 +144,19 @@ DRESULT USER_read (
 )
 {
   /* USER CODE BEGIN READ */
-    return RES_OK;
+	DRESULT res;
+	switch (pdrv)
+	{
+	case SD_PDRV:
+		if (SD_ReadDisk(buff, sector, count) == 0)
+			res = RES_OK;
+		else res = RES_ERROR;
+		break;
+	default:
+		res = RES_ERROR;
+		break;
+	}
+    return res;
   /* USER CODE END READ */
 }
 
@@ -139,7 +178,19 @@ DRESULT USER_write (
 {
   /* USER CODE BEGIN WRITE */
   /* USER CODE HERE */
-    return RES_OK;
+	DRESULT res;
+	switch (pdrv)
+	{
+	case SD_PDRV:
+		if (SD_WriteDisk((u8*)buff, sector, count) == 0)
+			res = RES_OK;
+		else res = RES_ERROR;
+		break;
+	default:
+		res = RES_ERROR;
+		break;
+	}
+    return res;
   /* USER CODE END WRITE */
 }
 #endif /* _USE_WRITE == 1 */

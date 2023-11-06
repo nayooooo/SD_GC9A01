@@ -30,4 +30,4 @@ usb/mmc_sd.o: ..\Middlewares\Third_Party\SD\MMC_SD.C \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rtc_ex.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_spi.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h \
-  ..\Core\Inc\spi.h
+  ..\Core\Inc\spi.h D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h

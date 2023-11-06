@@ -37,8 +37,7 @@ usb/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\FATFS\Target\user_diskio.h ..\Core\Inc\rtc.h ..\Core\Inc\spi.h \
   ..\Core\Inc\usart.h ..\Core\Inc\gpio.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
-  ..\Middlewares\Third_Party\mem\malloc.h \
-  ..\Middlewares\Third_Party\SD\mmc_sd.h ..\Core\Inc\at_user.h \
+  ..\Middlewares\Third_Party\mem\malloc.h ..\Core\Inc\at_user.h \
   ..\Middlewares\Third_Party\At\include\at.h \
   ..\Middlewares\Third_Party\At\include\at_type.h \
   ..\Middlewares\Third_Party\At\include\at_mem.h \

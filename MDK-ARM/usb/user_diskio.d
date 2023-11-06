@@ -33,4 +33,6 @@ usb/user_diskio.o: ..\FATFS\Target\user_diskio.c \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rtc.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rtc_ex.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_spi.h \
-  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h
+  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h \
+  ..\FATFS\Target\user_diskio.h ..\Middlewares\Third_Party\SD\mmc_sd.h \
+  ..\FATFS\App\fatfs.h

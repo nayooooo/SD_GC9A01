@@ -30,8 +30,6 @@
 #include <stdio.h>
 #include "malloc.h"
 
-#include "mmc_sd.h"
-
 #include "at_user.h"
 
 /* USER CODE END Includes */
@@ -53,6 +51,11 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+
+FATFS fs;
+FATFS* pfs = &fs;
+FIL f;
+FRESULT fres;
 
 /* USER CODE END PV */
 
@@ -110,8 +113,23 @@ int main(void)
 	  printf("at user initialize failed!\r\n");
   }
   
-  int MMC_SD_Card_Init(void);
-  MMC_SD_Card_Init();
+  fres = f_mount(&fs, "sd", 1);
+  printf("f_mount result: 0x%02X\r\n", fres);
+  if (fres != FR_OK) {
+	  printf("f_mount failed!\r\n");
+	  Error_Handler();
+  }
+  DWORD fre_clust;
+  if (f_getfree("sd", &fre_clust, &pfs) != FR_OK) {
+	  printf("f_getfree failed!\r\n");
+	  Error_Handler();
+  }
+  uint32_t totalSpace, freeSpace;  // unit(KB)
+  totalSpace = (uint32_t)(((pfs->n_fatent - 2) * pfs->csize) >> 1);
+  freeSpace = (uint32_t)((fre_clust * pfs->csize) >> 1);
+  printf("total:%.2fGB, free:%.2fGB\r\n",
+		(float)totalSpace / 1024 / 1024,
+		(float)freeSpace / 1024 / 1024);
   
   printf("STM32F103C8T6 initialize OK!\r\n");
 
@@ -177,32 +195,6 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-
-int MMC_SD_Card_Init(void)
-{
-	u8 r1;
-	u8 err_times = 0;
-	while ((r1 = SD_Init()) != MMC_SDCard_Ready) {
-		err_times++;
-		if (err_times >= 50) return -1;
-		printf("SD initialize error code: 0x%2X\r\n", r1);
-		HAL_Delay(500);
-		printf("Please Check!\r\n");
-		HAL_Delay(500);
-	}
-	printf("SD initialize success!\r\n");
-	printf("=================== SD information start ===================\r\n");
-	u8 id[16];
-	SD_GetCID(id);
-	printf("SD CID: 0x"); for (int i = 0; i < 16; i++) printf("%02X", id[i]); printf("\r\n");
-	SD_GetCSD(id);
-	printf("SD CSD: 0x"); for (int i = 0; i < 16; i++) printf("%02X", id[i]); printf("\r\n");
-	printf("SD Card Sectors: %d\r\n", (int)SD_GetSectorCount());
-	printf("SD Card Capacity: %.2fGB\r\n", (float)SD_GetSectorCount() * 512 / 1024 / 1024 / 1024);
-	printf("==================== SD information end ====================\r\n");
-	
-	return 0;
-}
 
 /* USER CODE END 4 */
 
