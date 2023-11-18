@@ -36,7 +36,7 @@
 "usb\ff.o"
 "usb\ff_gen_drv.o"
 "usb\syscall.o"
-"usb\cc936.o"
+"usb\ccsbcs.o"
 "usb\mmc_sd.o"
 --strict --scatter "usb\usb.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols

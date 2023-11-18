@@ -127,11 +127,19 @@ int main(void)
   uint32_t totalSpace, freeSpace;  // unit(KB)
   totalSpace = (uint32_t)(((pfs->n_fatent - 2) * pfs->csize) >> 1);
   freeSpace = (uint32_t)((fre_clust * pfs->csize) >> 1);
-  printf("total:%.2fGB, free:%.2fGB\r\n",
-		(float)totalSpace / 1024 / 1024,
-		(float)freeSpace / 1024 / 1024);
+  printf("total:%.2fGB, free:%.2fGB\r\n", (float)totalSpace / 1024 / 1024, (float)freeSpace / 1024 / 1024);
   
   printf("STM32F103C8T6 initialize OK!\r\n");
+		
+  DIR fdir;
+  FILINFO fno;
+  const char* fdir_path = "/test/txt";
+  f_opendir(&fdir, fdir_path);
+  printf("\r\npath(%s): \r\n", fdir_path);
+  while (f_readdir(&fdir, &fno) == FR_OK && fno.fname[0]) {
+	  printf("%s\r\n", fno.fname);
+  }
+  f_closedir(&fdir);
 
   /* USER CODE END 2 */
 

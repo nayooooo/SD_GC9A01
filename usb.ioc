@@ -1,6 +1,6 @@
 #MicroXplorer Configuration settings - do not modify
 FATFS.IPParameters=_CODE_PAGE,_USE_LABEL,_USE_LFN
-FATFS._CODE_PAGE=936
+FATFS._CODE_PAGE=850
 FATFS._USE_LABEL=1
 FATFS._USE_LFN=3
 File.Version=6
