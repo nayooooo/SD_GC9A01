@@ -63,6 +63,15 @@ FRESULT fres;
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
 
+void HAL_Delay(__IO uint32_t Delay)
+{
+	while (Delay) {
+		if (SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk) {
+			Delay--;
+		}
+	}
+}
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -114,29 +123,29 @@ int main(void)
 	  printf("at user initialize failed!\r\n");
   }
   
-  fres = f_mount(&fs, "sd", 1);
-  printf("f_mount result: 0x%02X\r\n", fres);
-  if (fres != FR_OK) {
-	  printf("f_mount failed!\r\n");
-	  Error_Handler();
-  }
-  DWORD fre_clust;
-  if (f_getfree("sd", &fre_clust, &pfs) != FR_OK) {
-	  printf("f_getfree failed!\r\n");
-	  Error_Handler();
-  }
-  uint32_t totalSpace, freeSpace;  // unit(KB)
-  totalSpace = (uint32_t)(((pfs->n_fatent - 2) * pfs->csize) >> 1);
-  freeSpace = (uint32_t)((fre_clust * pfs->csize) >> 1);
-  printf("totalSpace=%uKB, totalBlock=0x%X\r\n", totalSpace, totalSpace << 1);
-  printf("freeSpace=%uKB\r\n", freeSpace);
-  printf("total: %.2fGB, free: %.2fGB\r\n", (float)totalSpace / 1024 / 1024, (float)freeSpace / 1024 / 1024);
-  fres = f_mount(&fs, "sd", 0);
-  printf("f_unmount result: 0x%02X\r\n", fres);
-  if (fres != FR_OK) {
-	  printf("f_unmount failed!\r\n");
-	  Error_Handler();
-  }
+//  fres = f_mount(&fs, "sd", 1);
+//  printf("f_mount result: 0x%02X\r\n", fres);
+//  if (fres != FR_OK) {
+//	  printf("f_mount failed!\r\n");
+//	  Error_Handler();
+//  }
+//  DWORD fre_clust;
+//  if (f_getfree("sd", &fre_clust, &pfs) != FR_OK) {
+//	  printf("f_getfree failed!\r\n");
+//	  Error_Handler();
+//  }
+//  uint32_t totalSpace, freeSpace;  // unit(KB)
+//  totalSpace = (uint32_t)(((pfs->n_fatent - 2) * pfs->csize) >> 1);
+//  freeSpace = (uint32_t)((fre_clust * pfs->csize) >> 1);
+//  printf("totalSpace=%uKB, totalBlock=0x%X\r\n", totalSpace, totalSpace << 1);
+//  printf("freeSpace=%uKB\r\n", freeSpace);
+//  printf("total: %.2fGB, free: %.2fGB\r\n", (float)totalSpace / 1024 / 1024, (float)freeSpace / 1024 / 1024);
+//  fres = f_mount(&fs, "sd", 0);
+//  printf("f_unmount result: 0x%02X\r\n", fres);
+//  if (fres != FR_OK) {
+//	  printf("f_unmount failed!\r\n");
+//	  Error_Handler();
+//  }
   
   printf("STM32F103C8T6 initialize OK!\r\n");
 

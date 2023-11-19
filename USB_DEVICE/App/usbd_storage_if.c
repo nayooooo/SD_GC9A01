@@ -71,18 +71,10 @@
 
 /* USER CODE BEGIN PRIVATE_DEFINES */
 
-#ifdef  STORAGE_LUN_NBR
-#undef  STORAGE_LUN_NBR
-#endif  // STORAGE_LUN_NBR
 #ifdef  STORAGE_BLK_NBR
 #undef  STORAGE_BLK_NBR
 #endif  // STORAGE_BLK_NBR
-#ifdef  STORAGE_BLK_SIZ
-#undef  STORAGE_BLK_SIZ
-#endif  // STORAGE_BLK_SIZ
-#define STORAGE_LUN_NBR                  1
 #define STORAGE_BLK_NBR                  0x3A8800
-#define STORAGE_BLK_SIZ                  0x200
 
 /* USER CODE END PRIVATE_DEFINES */
 
