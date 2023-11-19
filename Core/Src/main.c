@@ -19,9 +19,9 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "fatfs.h"
-#include "rtc.h"
 #include "spi.h"
 #include "usart.h"
+#include "usb_device.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -101,12 +101,13 @@ int main(void)
   MX_USART1_UART_Init();
   MX_FATFS_Init();
   MX_SPI2_Init();
-  MX_RTC_Init();
+  MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
   
-  printf("Please ensure that the power outage duration is less than 24 hours.\r\n");
+  printf("\r\n");
   
-  my_mem_init(0);
+  my_mem_init(SRAMIN);
+  
   if (at_user_init() == AT_EOK) {
 	  printf("at user initialize ok!\r\n");
   } else {
@@ -127,19 +128,17 @@ int main(void)
   uint32_t totalSpace, freeSpace;  // unit(KB)
   totalSpace = (uint32_t)(((pfs->n_fatent - 2) * pfs->csize) >> 1);
   freeSpace = (uint32_t)((fre_clust * pfs->csize) >> 1);
-  printf("total:%.2fGB, free:%.2fGB\r\n", (float)totalSpace / 1024 / 1024, (float)freeSpace / 1024 / 1024);
+  printf("totalSpace=%uKB, totalBlock=0x%X\r\n", totalSpace, totalSpace << 1);
+  printf("freeSpace=%uKB\r\n", freeSpace);
+  printf("total: %.2fGB, free: %.2fGB\r\n", (float)totalSpace / 1024 / 1024, (float)freeSpace / 1024 / 1024);
+  fres = f_mount(&fs, "sd", 0);
+  printf("f_unmount result: 0x%02X\r\n", fres);
+  if (fres != FR_OK) {
+	  printf("f_unmount failed!\r\n");
+	  Error_Handler();
+  }
   
   printf("STM32F103C8T6 initialize OK!\r\n");
-		
-  DIR fdir;
-  FILINFO fno;
-  const char* fdir_path = "/test/txt";
-  f_opendir(&fdir, fdir_path);
-  printf("\r\npath(%s): \r\n", fdir_path);
-  while (f_readdir(&fdir, &fno) == FR_OK && fno.fname[0]) {
-	  printf("%s\r\n", fno.fname);
-  }
-  f_closedir(&fdir);
 
   /* USER CODE END 2 */
 
@@ -168,10 +167,9 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE|RCC_OSCILLATORTYPE_LSE;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
-  RCC_OscInitStruct.LSEState = RCC_LSE_ON;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
@@ -194,8 +192,8 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_RTC;
-  PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSE;
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USB;
+  PeriphClkInit.UsbClockSelection = RCC_USBCLKSOURCE_PLL_DIV1_5;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {
     Error_Handler();

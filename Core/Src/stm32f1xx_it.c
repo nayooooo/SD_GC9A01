@@ -55,7 +55,7 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
-extern RTC_HandleTypeDef hrtc;
+extern PCD_HandleTypeDef hpcd_USB_FS;
 extern UART_HandleTypeDef huart1;
 /* USER CODE BEGIN EV */
 
@@ -200,27 +200,17 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
-  * @brief This function handles RTC global interrupt.
+  * @brief This function handles USB low priority or CAN RX0 interrupts.
   */
-void RTC_IRQHandler(void)
+void USB_LP_CAN1_RX0_IRQHandler(void)
 {
-  /* USER CODE BEGIN RTC_IRQn 0 */
-	
-	if(__HAL_RTC_ALARM_GET_FLAG(&hrtc, RTC_FLAG_SEC) != RESET) {
-		__HAL_RTC_ALARM_CLEAR_FLAG(&hrtc, RTC_FLAG_SEC);
-		RTC_TimeTypeDef time;
-		if (HAL_RTC_GetTime(&hrtc, &time, RTC_FORMAT_BIN) != HAL_OK) {
-			Error_Handler();
-		}
-		HAL_StatusTypeDef rtc_user_time_write_bkp(RTC_TimeTypeDef* time);
-		rtc_user_time_write_bkp(&time);
-	}
+  /* USER CODE BEGIN USB_LP_CAN1_RX0_IRQn 0 */
 
-  /* USER CODE END RTC_IRQn 0 */
-  HAL_RTCEx_RTCIRQHandler(&hrtc);
-  /* USER CODE BEGIN RTC_IRQn 1 */
+  /* USER CODE END USB_LP_CAN1_RX0_IRQn 0 */
+  HAL_PCD_IRQHandler(&hpcd_USB_FS);
+  /* USER CODE BEGIN USB_LP_CAN1_RX0_IRQn 1 */
 
-  /* USER CODE END RTC_IRQn 1 */
+  /* USER CODE END USB_LP_CAN1_RX0_IRQn 1 */
 }
 
 /**

@@ -16,8 +16,6 @@
   ******************************************************************************
   */
   
-#include "rtc.h"
-  
 /* USER CODE END Header */
 #include "fatfs.h"
 
@@ -48,18 +46,7 @@ void MX_FATFS_Init(void)
 DWORD get_fattime(void)
 {
   /* USER CODE BEGIN get_fattime */
-	extern RTC_HandleTypeDef hrtc;
-	RTC_DateTypeDef date;
-	RTC_TimeTypeDef time;
-	HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
-	HAL_RTC_GetTime(&hrtc, &time, RTC_FORMAT_BIN);
 	DWORD timeStamp = 0x00000000;
-	timeStamp |= (uint8_t)((int)date.Year - RTC_USER_DATE_YEAR_DELTA - 1980); timeStamp <<= 4;
-	timeStamp |= (uint8_t)date.Month; timeStamp <<= 5;
-	timeStamp |= (uint8_t)date.Date; timeStamp <<= 5;
-	timeStamp |= (uint8_t)time.Hours; timeStamp <<= 6;
-	timeStamp |= (uint8_t)time.Minutes; timeStamp <<= 5;
-	timeStamp |= (uint8_t)time.Seconds >> 1;
 	return timeStamp;
   /* USER CODE END get_fattime */
 }
@@ -73,14 +60,14 @@ void* ff_memalloc (	/* Returns pointer to the allocated memory block */
 	UINT msize		/* Number of bytes to allocate */
 )
 {
-	return mymalloc(0, msize);	/* Allocate a new memory block with POSIX API */
+	return mymalloc(SRAMIN, msize);	/* Allocate a new memory block with POSIX API */
 }
 
 void ff_memfree (
 	void* mblock	/* Pointer to the memory block to free */
 )
 {
-	myfree(0, mblock);	/* Discard the memory block with POSIX API */
+	myfree(SRAMIN, mblock);	/* Discard the memory block with POSIX API */
 }
 
 /* USER CODE END Application */
