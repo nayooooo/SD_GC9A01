@@ -23,8 +23,7 @@
 
 /* USER CODE BEGIN INCLUDE */
 
-#include "diskio.h"
-#include "user_diskio.h"
+#include "mmc_sd.h"
 
 /* USER CODE END INCLUDE */
 
@@ -71,10 +70,17 @@
 
 /* USER CODE BEGIN PRIVATE_DEFINES */
 
+#define FLASH_START_ADDR				 (FLASH_BASE+(100*1024))
+
 #ifdef  STORAGE_BLK_NBR
 #undef  STORAGE_BLK_NBR
 #endif  // STORAGE_BLK_NBR
-#define STORAGE_BLK_NBR                  0x3A8800
+#ifdef  STORAGE_BLK_SIZ
+#undef  STORAGE_BLK_SIZ
+#endif  // STORAGE_BLK_SIZ
+//#define STORAGE_BLK_NBR                  0x3A8800
+#define STORAGE_BLK_NBR                  48
+#define STORAGE_BLK_SIZ					 FLASH_PAGE_SIZE
 
 /* USER CODE END PRIVATE_DEFINES */
 
@@ -185,8 +191,7 @@ USBD_StorageTypeDef USBD_Storage_Interface_fops_FS =
 int8_t STORAGE_Init_FS(uint8_t lun)
 {
   /* USER CODE BEGIN 2 */
-  DRESULT res = disk_initialize(SD_PDRV);
-  if (res != RES_OK) return (USBD_FAIL);
+  if (MMC_SD_Card_Init()) return (USBD_FAIL);
   return (USBD_OK);
   /* USER CODE END 2 */
 }
@@ -239,8 +244,8 @@ int8_t STORAGE_IsWriteProtected_FS(uint8_t lun)
 int8_t STORAGE_Read_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t blk_len)
 {
   /* USER CODE BEGIN 6 */
-  DRESULT res = disk_read(SD_PDRV, buf, blk_addr, blk_len);
-  if (res != RES_OK) return (USBD_FAIL);
+  UNUSED(lun);
+  if (SD_ReadDisk(buf, blk_addr, blk_len) != 0) return (USBD_FAIL);
   return (USBD_OK);
   /* USER CODE END 6 */
 }
@@ -253,8 +258,8 @@ int8_t STORAGE_Read_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t bl
 int8_t STORAGE_Write_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t blk_len)
 {
   /* USER CODE BEGIN 7 */
-  DRESULT res = disk_write(SD_PDRV, buf, blk_addr, blk_len);
-  if (res != RES_OK) return (USBD_FAIL);
+  UNUSED(lun);
+  if (SD_WriteDisk(buf, blk_addr, blk_len) != 0) return (USBD_FAIL);
   return (USBD_OK);
   /* USER CODE END 7 */
 }

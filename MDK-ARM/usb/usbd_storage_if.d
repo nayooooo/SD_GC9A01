@@ -42,8 +42,4 @@ usb/usbd_storage_if.o: ..\USB_DEVICE\App\usbd_storage_if.c \
   ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_ioreq.h \
   ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_ctlreq.h \
   ..\Middlewares\ST\STM32_USB_Device_Library\Class\MSC\Inc\usbd_msc_scsi.h \
-  ..\Middlewares\Third_Party\FatFs\src\diskio.h \
-  ..\Middlewares\Third_Party\FatFs\src\integer.h \
-  ..\FATFS\Target\user_diskio.h \
-  ..\Middlewares\Third_Party\FatFs\src\ff_gen_drv.h \
-  ..\Middlewares\Third_Party\FatFs\src\ff.h ..\FATFS\Target\ffconf.h
+  ..\Middlewares\Third_Party\SD\mmc_sd.h

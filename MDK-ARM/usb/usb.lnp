@@ -1,6 +1,8 @@
 --cpu Cortex-M3
 "usb\startup_stm32f103xb.o"
 "usb\at_user.o"
+"usb\lcd_init.o"
+"usb\lcd.o"
 "usb\main.o"
 "usb\gpio.o"
 "usb\spi.o"

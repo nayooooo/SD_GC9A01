@@ -32,6 +32,8 @@
 
 #include "at_user.h"
 
+#include "lcd.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -63,14 +65,14 @@ FRESULT fres;
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
 
-void HAL_Delay(__IO uint32_t Delay)
-{
-	while (Delay) {
-		if (SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk) {
-			Delay--;
-		}
-	}
-}
+//void HAL_Delay(__IO uint32_t Delay)
+//{
+//	while (Delay) {
+//		if (SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk) {
+//			Delay--;
+//		}
+//	}
+//}
 
 /* USER CODE END PFP */
 
@@ -102,7 +104,7 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+	
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -122,6 +124,9 @@ int main(void)
   } else {
 	  printf("at user initialize failed!\r\n");
   }
+  
+  LCD_Init();
+  LCD_Fill(0, 0, LCD_W, LCD_H, WHITE);
   
 //  fres = f_mount(&fs, "sd", 1);
 //  printf("f_mount result: 0x%02X\r\n", fres);
@@ -153,9 +158,29 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  
+  uint32_t lcd_frames = 0;
+  uint32_t lcd_test_fps_start_time = HAL_GetTick();
+  uint32_t lcd_test_time = 0;
+  
   while (1)
   {
 	  at.handleAuto(&at);
+	  
+	  if (lcd_test_time <= 10000) {
+		  LCD_Fill(0, 0, LCD_W, LCD_H, lcd_frames++);
+		  lcd_test_time = HAL_GetTick() - lcd_test_fps_start_time;
+	  } else if (lcd_test_time != -1) {
+		  float lcd_fps = (float)lcd_frames / ((float)lcd_test_time / 1000);
+		  LCD_ShowString(20, 104, (const u8*)"lcd test ok!", RED, WHITE, 16, 0);
+		  LCD_ShowString(20, 120, (const u8*)"test time: 10s", RED, WHITE, 16, 0);
+		  LCD_ShowString(20, 136, (const u8*)"total frame: ", RED, WHITE, 16, 0);
+		  LCD_ShowIntNum(134, 136, lcd_frames, 5, RED, WHITE, 16);
+		  LCD_ShowString(20, 152, (const u8*)"lcd fps: ", RED, WHITE, 16, 0);
+		  LCD_ShowFloatNum1(92, 152, lcd_fps, 5, RED, WHITE, 16);
+		  lcd_test_time = -1;
+	  }
+	  
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

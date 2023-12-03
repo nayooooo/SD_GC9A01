@@ -46,4 +46,5 @@ usb/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Middlewares\Third_Party\At\include\at.h \
   ..\Middlewares\Third_Party\At\include\at_type.h \
   ..\Middlewares\Third_Party\At\include\at_mem.h \
-  ..\Middlewares\Third_Party\At\include\at_stream_device.h
+  ..\Middlewares\Third_Party\At\include\at_stream_device.h \
+  ..\Core\Inc\lcd.h ..\Core\Inc\lcd_init.h
