@@ -1,5 +1,5 @@
-# USBSD
+# SD_GC9A01
 
-USBSD which is a USB device for some storage medium by FATFS.
+SD_GC9A01 which is a LCD demo with SD card.
 
 Just for STM32F103C8T6.
