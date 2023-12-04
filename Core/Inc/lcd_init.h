@@ -3,14 +3,11 @@
 
 #include "main.h"
 
-#define USE_HORIZONTAL 0  //设置横屏或者竖屏显示 0或1为竖屏 2或3为横屏
+#define USE_HORIZONTAL 1  //设置横屏或者竖屏显示 0或1为竖屏 2或3为横屏
 
 
 #define LCD_W 240
 #define LCD_H 240
-
-
-
 
 
 #define DATAOUT(x)	{GPIOA->BSRR=((x&0x0000000F)|0x000F0000); \
@@ -33,12 +30,12 @@
 
 
 
-void LCD_GPIO_Init(void);//初始化GPIO
-void LCD_Writ_Bus(u8 dat);//模拟SPI时序
 void LCD_WR_DATA8(u8 dat);//写入一个字节
+void LCD_WR_DATA8_Faster(u8* dat, u32 size);
 void LCD_WR_DATA(u16 dat);//写入两个字节
+void LCD_WR_DATA_Faster(u16* dat, u32 size);
 void LCD_WR_REG(u8 dat);//写入一个指令
-void LCD_Address_Set(u16 x1,u16 y1,u16 x2,u16 y2);//设置坐标函数
+void LCD_Area_Set(u16 x1,u16 y1,u16 x2,u16 y2);//设置显示区域
 void LCD_Init(void);//LCD初始化
 #endif
 

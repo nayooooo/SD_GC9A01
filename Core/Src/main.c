@@ -74,6 +74,27 @@ void SystemClock_Config(void);
 //	}
 //}
 
+void LCD_Test_Fps(void)
+{
+	uint32_t lcd_frames = 0;
+	uint32_t lcd_test_fps_start_time;
+	uint32_t lcd_test_time = 0;
+	
+	lcd_test_fps_start_time = HAL_GetTick();
+	
+	while (lcd_test_time <= 10000) {
+		LCD_Fill(0, 0, LCD_W, LCD_H, lcd_frames++);
+		lcd_test_time = HAL_GetTick() - lcd_test_fps_start_time;
+	}
+	float lcd_fps = (float)lcd_frames / ((float)lcd_test_time / 1000);
+	LCD_ShowString(20, 104, (const u8*)"lcd test ok!", RED, WHITE, 16, 0);
+	LCD_ShowString(20, 120, (const u8*)"test time: 10s", RED, WHITE, 16, 0);
+	LCD_ShowString(20, 136, (const u8*)"total frame: ", RED, WHITE, 16, 0);
+	LCD_ShowIntNum(134, 136, lcd_frames, 5, RED, WHITE, 16);
+	LCD_ShowString(20, 152, (const u8*)"lcd fps: ", RED, WHITE, 16, 0);
+	LCD_ShowFloatNum1(92, 152, lcd_fps, 5, RED, WHITE, 16);
+}
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -159,27 +180,11 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   
-  uint32_t lcd_frames = 0;
-  uint32_t lcd_test_fps_start_time = HAL_GetTick();
-  uint32_t lcd_test_time = 0;
+  LCD_Test_Fps();
   
   while (1)
   {
 	  at.handleAuto(&at);
-	  
-	  if (lcd_test_time <= 10000) {
-		  LCD_Fill(0, 0, LCD_W, LCD_H, lcd_frames++);
-		  lcd_test_time = HAL_GetTick() - lcd_test_fps_start_time;
-	  } else if (lcd_test_time != -1) {
-		  float lcd_fps = (float)lcd_frames / ((float)lcd_test_time / 1000);
-		  LCD_ShowString(20, 104, (const u8*)"lcd test ok!", RED, WHITE, 16, 0);
-		  LCD_ShowString(20, 120, (const u8*)"test time: 10s", RED, WHITE, 16, 0);
-		  LCD_ShowString(20, 136, (const u8*)"total frame: ", RED, WHITE, 16, 0);
-		  LCD_ShowIntNum(134, 136, lcd_frames, 5, RED, WHITE, 16);
-		  LCD_ShowString(20, 152, (const u8*)"lcd fps: ", RED, WHITE, 16, 0);
-		  LCD_ShowFloatNum1(92, 152, lcd_fps, 5, RED, WHITE, 16);
-		  lcd_test_time = -1;
-	  }
 	  
     /* USER CODE END WHILE */
 

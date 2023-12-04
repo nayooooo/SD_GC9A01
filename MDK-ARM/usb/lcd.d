@@ -30,4 +30,5 @@ usb/lcd.o: ..\Core\Src\lcd.c ..\Core\Inc\lcd.h ..\Core\Inc\main.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_pcd.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_usb.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_pcd_ex.h \
-  ..\Core\Inc\lcd_init.h ..\Core\Inc\lcdfont.h
+  ..\Core\Inc\lcd_init.h ..\Core\Inc\lcdfont.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h

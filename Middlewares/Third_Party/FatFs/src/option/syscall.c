@@ -90,12 +90,12 @@ void ff_rel_grant (
 
 
 
-//#if _USE_LFN == 3	/* LFN with a working buffer on the heap */
-///*------------------------------------------------------------------------*/
-///* Allocate a memory block                                                */
-///*------------------------------------------------------------------------*/
-///* If a NULL is returned, the file function fails with FR_NOT_ENOUGH_CORE.
-//*/
+#if _USE_LFN == 3	/* LFN with a working buffer on the heap */
+/*------------------------------------------------------------------------*/
+/* Allocate a memory block                                                */
+/*------------------------------------------------------------------------*/
+/* If a NULL is returned, the file function fails with FR_NOT_ENOUGH_CORE.
+*/
 
 //void* ff_memalloc (	/* Returns pointer to the allocated memory block */
 //	UINT msize		/* Number of bytes to allocate */
@@ -116,4 +116,4 @@ void ff_rel_grant (
 //	free(mblock);	/* Discard the memory block with POSIX API */
 //}
 
-//#endif
+#endif

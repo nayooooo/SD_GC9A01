@@ -5,7 +5,7 @@ static void delay_ms(u32 nms)
 	HAL_Delay(nms);
 }
 
-void LCD_GPIO_Init(void)
+static void LCD_GPIO_Init(void)
 {
 //	GPIO_InitTypeDef  GPIO_InitStructure;
 // 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB|RCC_APB2Periph_AFIO, ENABLE);	 //使能A端口时钟
@@ -28,15 +28,11 @@ void LCD_GPIO_Init(void)
       入口数据：dat  要写入的串行数据
       返回值：  无
 ******************************************************************************/
-void LCD_Writ_Bus(u8 dat) 
+static void LCD_Writ_Bus(u8 dat) 
 {	
-	LCD_CS_Clr();
-
 	DATAOUT(dat);
-//	LCD_DATAOUT(dat);
 	LCD_WR_Clr();
 	LCD_WR_Set();
-	LCD_CS_Set();
 }
 
 
@@ -48,7 +44,25 @@ void LCD_Writ_Bus(u8 dat)
 void LCD_WR_DATA8(u8 dat)
 {
 	LCD_DC_Set();
+	LCD_CS_Clr();
 	LCD_Writ_Bus(dat);
+	LCD_CS_Set();
+}
+
+
+/******************************************************************************
+      函数说明：LCD写入数据
+      入口数据：dat 写入的数据
+      返回值：  无
+******************************************************************************/
+void LCD_WR_DATA8_Faster(u8* dat, u32 size)
+{
+	LCD_DC_Set();
+	LCD_CS_Clr();
+	for (u32 i = 0; i < size; i++) {
+		LCD_Writ_Bus(dat[i]);
+	}
+	LCD_CS_Set();
 }
 
 
@@ -60,8 +74,27 @@ void LCD_WR_DATA8(u8 dat)
 void LCD_WR_DATA(u16 dat)
 {
 	LCD_DC_Set();
+	LCD_CS_Clr();
 	LCD_Writ_Bus(dat>>8);
 	LCD_Writ_Bus(dat);
+	LCD_CS_Set();
+}
+
+
+/******************************************************************************
+      函数说明：LCD写入数据
+      入口数据：dat 写入的数据
+      返回值：  无
+******************************************************************************/
+void LCD_WR_DATA_Faster(u16* dat, u32 size)
+{
+	LCD_DC_Set();
+	LCD_CS_Clr();
+	for (u32 i = 0; i < size; i++) {
+		LCD_Writ_Bus(dat[i]>>8);
+		LCD_Writ_Bus(dat[i]);
+	}
+	LCD_CS_Set();
 }
 
 
@@ -73,8 +106,9 @@ void LCD_WR_DATA(u16 dat)
 void LCD_WR_REG(u8 dat)
 {
 	LCD_DC_Clr();//写命令
+	LCD_CS_Clr();
 	LCD_Writ_Bus(dat);
-	LCD_DC_Set();//写数据
+	LCD_CS_Set();
 }
 
 /******************************************************************************
@@ -83,7 +117,7 @@ void LCD_WR_REG(u8 dat)
                 y1,y2 设置行的起始和结束地址
       返回值：  无
 ******************************************************************************/
-void LCD_Address_Set(u16 x1,u16 y1,u16 x2,u16 y2)
+void LCD_Area_Set(u16 x1,u16 y1,u16 x2,u16 y2)
 {
 		LCD_WR_REG(0x2a);//列地址设置
 		LCD_WR_DATA(x1);
