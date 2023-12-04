@@ -1,5 +1,11 @@
 #include "lcd_init.h"
 
+#if USE_FATFS
+#include "fatfs.h"
+#include <stdio.h>
+#include <string.h>
+#endif
+
 static void delay_ms(u32 nms)
 {
 	HAL_Delay(nms);
@@ -192,10 +198,41 @@ void LCD_Init(void)
 	LCD_WR_DATA8(0x20);
 
 	LCD_WR_REG(0x36);
+#if USE_FATFS
+	FATFS fs;
+	FIL fil;
+	FRESULT fres = f_mount(&fs, "sd", 1);
+	if (fres != FR_OK) {
+		printf("[LCD] FatFS mount sd card failed!\r\n");
+		goto lcd_fatfs_config_error;
+	}
+	if (f_open(&fil, "USBSD_GC9A01/Config/gc9a01.conf", FA_READ) != FR_OK) {
+		printf("[LCD] open file(gc9a01.conf) failed!\r\n");
+		goto lcd_fatfs_config_error;
+	}
+	char buff[20] = { 0 };
+	UINT br;
+	f_read(&fil, buff, 20, &br);
+	char* pos = strstr(buff, "HORIZONTAL");
+	pos = strstr(pos, "="); pos++;
+	int lcd_horizontal;
+	sscanf(pos, "%d", &lcd_horizontal);
+	if (lcd_horizontal==0)LCD_WR_DATA8(0x08);
+	else if(lcd_horizontal==1)LCD_WR_DATA8(0xC8);
+	else if(lcd_horizontal==2)LCD_WR_DATA8(0x68);
+	else LCD_WR_DATA8(0xA8);
+	if (0) {
+	lcd_fatfs_config_error:
+		LCD_WR_DATA8(0xA8);
+	}
+	f_close(&fil);
+	f_mount(&fs, "sd", 0);
+#else
 	if(USE_HORIZONTAL==0)LCD_WR_DATA8(0x08);
 	else if(USE_HORIZONTAL==1)LCD_WR_DATA8(0xC8);
 	else if(USE_HORIZONTAL==2)LCD_WR_DATA8(0x68);
 	else LCD_WR_DATA8(0xA8);
+#endif
 
 	LCD_WR_REG(0x3A);			
 	LCD_WR_DATA8(0x05); 

@@ -21,7 +21,6 @@
 #include "fatfs.h"
 #include "spi.h"
 #include "usart.h"
-#include "usb_device.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -73,6 +72,33 @@ void SystemClock_Config(void);
 //		}
 //	}
 //}
+
+void FatFS_Test_SD_Card(void)
+{
+  fres = f_mount(&fs, "sd", 1);
+  printf("f_mount result: 0x%02X\r\n", fres);
+  if (fres != FR_OK) {
+	  printf("f_mount failed!\r\n");
+	  Error_Handler();
+  }
+  DWORD fre_clust;
+  if (f_getfree("sd", &fre_clust, &pfs) != FR_OK) {
+	  printf("f_getfree failed!\r\n");
+	  Error_Handler();
+  }
+  uint32_t totalSpace, freeSpace;  // unit(KB)
+  totalSpace = (uint32_t)(((pfs->n_fatent - 2) * pfs->csize) >> 1);
+  freeSpace = (uint32_t)((fre_clust * pfs->csize) >> 1);
+  printf("totalSpace=%uKB, totalBlock=0x%X\r\n", totalSpace, totalSpace << 1);
+  printf("freeSpace=%uKB\r\n", freeSpace);
+  printf("total: %.2fGB, free: %.2fGB\r\n", (float)totalSpace / 1024 / 1024, (float)freeSpace / 1024 / 1024);
+  fres = f_mount(&fs, "sd", 0);
+  printf("f_unmount result: 0x%02X\r\n", fres);
+  if (fres != FR_OK) {
+	  printf("f_unmount failed!\r\n");
+	  Error_Handler();
+  }
+}
 
 void LCD_Test_Fps(void)
 {
@@ -133,7 +159,6 @@ int main(void)
   MX_USART1_UART_Init();
   MX_FATFS_Init();
   MX_SPI2_Init();
-  MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
   
   printf("\r\n");
@@ -149,29 +174,7 @@ int main(void)
   LCD_Init();
   LCD_Fill(0, 0, LCD_W, LCD_H, WHITE);
   
-//  fres = f_mount(&fs, "sd", 1);
-//  printf("f_mount result: 0x%02X\r\n", fres);
-//  if (fres != FR_OK) {
-//	  printf("f_mount failed!\r\n");
-//	  Error_Handler();
-//  }
-//  DWORD fre_clust;
-//  if (f_getfree("sd", &fre_clust, &pfs) != FR_OK) {
-//	  printf("f_getfree failed!\r\n");
-//	  Error_Handler();
-//  }
-//  uint32_t totalSpace, freeSpace;  // unit(KB)
-//  totalSpace = (uint32_t)(((pfs->n_fatent - 2) * pfs->csize) >> 1);
-//  freeSpace = (uint32_t)((fre_clust * pfs->csize) >> 1);
-//  printf("totalSpace=%uKB, totalBlock=0x%X\r\n", totalSpace, totalSpace << 1);
-//  printf("freeSpace=%uKB\r\n", freeSpace);
-//  printf("total: %.2fGB, free: %.2fGB\r\n", (float)totalSpace / 1024 / 1024, (float)freeSpace / 1024 / 1024);
-//  fres = f_mount(&fs, "sd", 0);
-//  printf("f_unmount result: 0x%02X\r\n", fres);
-//  if (fres != FR_OK) {
-//	  printf("f_unmount failed!\r\n");
-//	  Error_Handler();
-//  }
+  FatFS_Test_SD_Card();
   
   printf("STM32F103C8T6 initialize OK!\r\n");
 
@@ -201,7 +204,6 @@ void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
-  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
 
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
@@ -228,12 +230,6 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USB;
-  PeriphClkInit.UsbClockSelection = RCC_USBCLKSOURCE_PLL_DIV1_5;
-  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {
     Error_Handler();
   }

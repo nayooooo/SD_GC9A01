@@ -51,6 +51,8 @@ typedef uint32_t u32;
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
 
+#define USE_FATFS			(1)
+
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/

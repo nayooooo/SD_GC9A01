@@ -27,6 +27,11 @@ usb/lcd_init.o: ..\Core\Src\lcd_init.c ..\Core\Inc\lcd_init.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_pwr.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_spi.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h \
-  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_pcd.h \
-  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_usb.h \
-  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_pcd_ex.h
+  ..\FATFS\App\fatfs.h ..\Middlewares\Third_Party\FatFs\src\ff.h \
+  ..\Middlewares\Third_Party\FatFs\src\integer.h \
+  ..\FATFS\Target\ffconf.h \
+  ..\Middlewares\Third_Party\FatFs\src\ff_gen_drv.h \
+  ..\Middlewares\Third_Party\FatFs\src\diskio.h \
+  ..\FATFS\Target\user_diskio.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h
