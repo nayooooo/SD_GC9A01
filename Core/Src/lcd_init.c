@@ -223,7 +223,7 @@ void LCD_Init(void)
 	else LCD_WR_DATA8(0xA8);
 	if (0) {
 	lcd_fatfs_config_error:
-		LCD_WR_DATA8(0xA8);
+		LCD_WR_DATA8(0x08);
 	}
 	f_close(&fil);
 	f_mount(&fs, "sd", 0);

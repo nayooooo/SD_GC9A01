@@ -37,6 +37,8 @@
 "usb\syscall.o"
 "usb\ccsbcs.o"
 "usb\mmc_sd.o"
+"usb\complex.o"
+"usb\fft.o"
 --strict --scatter "usb\usb.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

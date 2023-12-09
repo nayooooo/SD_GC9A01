@@ -361,8 +361,8 @@ int MMC_SD_Card_Init(void)
 	u8 err_times = 0;
 	while ((r1 = SD_Init()) != MMC_SDCard_Ready) {
 		err_times++;
-		if (err_times >= 50) return -1;
-		printf("SD initialize error code: 0x%2X\r\n", r1);
+		if (err_times >= 10) return -1;
+		printf("[%u] SD initialize error code: 0x%2X\r\n", err_times, r1);
 		HAL_Delay(500);
 		printf("Please Check!\r\n");
 		HAL_Delay(500);

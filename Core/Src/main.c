@@ -29,6 +29,8 @@
 #include <stdio.h>
 #include "malloc.h"
 
+#include "fft.h"
+
 #include "at_user.h"
 
 #include "lcd.h"
@@ -79,12 +81,12 @@ void FatFS_Test_SD_Card(void)
   printf("f_mount result: 0x%02X\r\n", fres);
   if (fres != FR_OK) {
 	  printf("f_mount failed!\r\n");
-	  Error_Handler();
+	  return;
   }
   DWORD fre_clust;
   if (f_getfree("sd", &fre_clust, &pfs) != FR_OK) {
 	  printf("f_getfree failed!\r\n");
-	  Error_Handler();
+	  goto error_out;
   }
   uint32_t totalSpace, freeSpace;  // unit(KB)
   totalSpace = (uint32_t)(((pfs->n_fatent - 2) * pfs->csize) >> 1);
@@ -92,11 +94,12 @@ void FatFS_Test_SD_Card(void)
   printf("totalSpace=%uKB, totalBlock=0x%X\r\n", totalSpace, totalSpace << 1);
   printf("freeSpace=%uKB\r\n", freeSpace);
   printf("total: %.2fGB, free: %.2fGB\r\n", (float)totalSpace / 1024 / 1024, (float)freeSpace / 1024 / 1024);
+error_out:
   fres = f_mount(&fs, "sd", 0);
   printf("f_unmount result: 0x%02X\r\n", fres);
   if (fres != FR_OK) {
 	  printf("f_unmount failed!\r\n");
-	  Error_Handler();
+	  return;
   }
 }
 
@@ -119,6 +122,48 @@ void LCD_Test_Fps(void)
 	LCD_ShowIntNum(134, 136, lcd_frames, 5, RED, WHITE, 16);
 	LCD_ShowString(20, 152, (const u8*)"lcd fps: ", RED, WHITE, 16, 0);
 	LCD_ShowFloatNum1(92, 152, lcd_fps, 5, RED, WHITE, 16);
+}
+
+void LCD_Draw_Star(void)
+{
+  fres = f_mount(&fs, "sd", 1);
+  printf("f_mount result: 0x%02X\r\n", fres);
+  if (fres != FR_OK) {
+	  printf("f_mount failed!\r\n");
+	  return;
+  }
+  
+  fres = f_open(&f, "/data/FFT/star.txt", FA_READ);
+  if (fres != FR_OK) {
+	  printf("f_mount failed!\r\n");
+	  goto error_out;
+  }
+  char buffer[30];
+  complex star[8];
+  complex star_fft[8];
+  for (int i = 0; i < 8; i++) {
+	  f_gets(buffer, sizeof(buffer), &f);
+	  sscanf(buffer, "%lf %lf\n", &(star[i].real), &(star[i].imag));
+	  printf("[%d] %+.4f, %+.4f\r\n", i, star[i].real, star[i].imag);
+  }
+  fft(star, 8, star_fft, 8);
+  for (int i = 0; i < 8; i++) {
+	  star_fft[i].imag = 240.0 - star_fft[i].imag;
+  }
+  for (int i = 0; i < 8; i++) {
+	  printf("[FFT %d] (%u, %u)\r\n", i, (u16)(star_fft[i].real), (u16)(star_fft[i].imag));
+	  LCD_DrawLine((u16)(star_fft[i].real), (u16)(star_fft[i].imag),
+					(u16)(star_fft[(i+1)%8].real), (u16)(star_fft[(i+1)%8].imag), RED);
+  }
+  f_close(&f);
+  
+error_out:
+  fres = f_mount(&fs, "sd", 0);
+  printf("f_unmount result: 0x%02X\r\n", fres);
+  if (fres != FR_OK) {
+	  printf("f_unmount failed!\r\n");
+	  return;
+  }
 }
 
 /* USER CODE END PFP */
@@ -183,7 +228,7 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   
-  LCD_Test_Fps();
+  LCD_Draw_Star();
   
   while (1)
   {
