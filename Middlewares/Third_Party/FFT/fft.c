@@ -111,7 +111,7 @@ static fft_err_t fft_butterflyOperation(complex* data, uint32_t N)
 }
 
 // DIT-FFT
-fft_err_t fft(complex* x, uint32_t x_N, complex* y, uint32_t N)
+static fft_err_t _dit_fft(complex* x, uint32_t x_N, complex* y, uint32_t N)
 {
     if (x_N == 0) {
         FFT_DBG_ERR("The x data is empty!");
@@ -138,6 +138,16 @@ fft_err_t fft(complex* x, uint32_t x_N, complex* y, uint32_t N)
     fft_butterflyOperation(y, N);
 
     return FFT_OK;
+}
+
+fft_err_t fft(complex* x, uint32_t x_N, complex* y, uint32_t N)
+{
+    if (FFT_OK == fft_isNPowOf2(N)) {
+        return _dit_fft(x, x_N, y, N);
+    } else {
+        return FFT_ERROR;
+    }
+    return FFT_ERROR;
 }
 
 fft_err_t ifft(complex* x, uint32_t x_N, complex* y, uint32_t N)
@@ -178,7 +188,7 @@ fft_err_t fft_printData(complex* data, uint32_t N)
 {
     fft_printf("complex sequence(N=%u): \r\n", N);
     for (uint64_t i = 0; i < N; i++) {
-        fft_printf("[%u]\t%.4f%+.4fi\r\n", (uint32_t)i, data[i].real, data[i].imag);
+        fft_printf("[%u]\t%.4f%+.4fi\r\n", (unsigned int)i, data[i].real, data[i].imag);
     }
     return FFT_OK;
 }
