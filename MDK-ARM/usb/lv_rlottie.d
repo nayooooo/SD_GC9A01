@@ -189,7 +189,6 @@ usb/lv_rlottie.o: ..\Middlewares\lvgl\src\libs\rlottie\lv_rlottie.c \
   ..\Middlewares\lvgl\src\widgets\spinner\..\..\..\lvgl.h \
   ..\Middlewares\lvgl\src\widgets\switch\lv_switch.h \
   ..\Middlewares\lvgl\src\widgets\switch\..\..\lv_conf_internal.h \
-  ..\Middlewares\lvgl\src\widgets\switch\..\..\core\lv_obj.h \
   ..\Middlewares\lvgl\src\widgets\table\lv_table.h \
   ..\Middlewares\lvgl\src\widgets\table\..\label\lv_label.h \
   ..\Middlewares\lvgl\src\widgets\tabview\lv_tabview.h \

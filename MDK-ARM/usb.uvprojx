@@ -2372,11 +2372,6 @@
           <GroupName>Middlewares/LVGL/Widgets</GroupName>
           <Files>
             <File>
-              <FileName>lv_animimage.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\animimage\lv_animimage.c</FilePath>
-            </File>
-            <File>
               <FileName>lv_arc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Middlewares\lvgl\src\widgets\arc\lv_arc.c</FilePath>
@@ -2387,64 +2382,9 @@
               <FilePath>..\Middlewares\lvgl\src\widgets\bar\lv_bar.c</FilePath>
             </File>
             <File>
-              <FileName>lv_button.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\button\lv_button.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_buttonmatrix.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\buttonmatrix\lv_buttonmatrix.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_calendar.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\calendar\lv_calendar.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_calendar_header_arrow.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\calendar\lv_calendar_header_arrow.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_calendar_header_dropdown.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\calendar\lv_calendar_header_dropdown.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_canvas.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\canvas\lv_canvas.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_chart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\chart\lv_chart.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_checkbox.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\checkbox\lv_checkbox.c</FilePath>
-            </File>
-            <File>
               <FileName>lv_dropdown.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Middlewares\lvgl\src\widgets\dropdown\lv_dropdown.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_image.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\image\lv_image.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_imgbtn.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\imgbtn\lv_imgbtn.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_keyboard.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\keyboard\lv_keyboard.c</FilePath>
             </File>
             <File>
               <FileName>lv_label.c</FileName>
@@ -2462,84 +2402,14 @@
               <FilePath>..\Middlewares\lvgl\src\widgets\line\lv_line.c</FilePath>
             </File>
             <File>
-              <FileName>lv_list.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\list\lv_list.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_menu.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\menu\lv_menu.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_msgbox.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\msgbox\lv_msgbox.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_objx_templ.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\objx_templ\lv_objx_templ.c</FilePath>
-            </File>
-            <File>
               <FileName>lv_roller.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Middlewares\lvgl\src\widgets\roller\lv_roller.c</FilePath>
             </File>
             <File>
-              <FileName>lv_scale.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\scale\lv_scale.c</FilePath>
-            </File>
-            <File>
               <FileName>lv_slider.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Middlewares\lvgl\src\widgets\slider\lv_slider.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_span.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\span\lv_span.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_spinbox.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\spinbox\lv_spinbox.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_spinner.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\spinner\lv_spinner.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_switch.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\switch\lv_switch.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_table.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\table\lv_table.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_tabview.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\tabview\lv_tabview.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_textarea.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\textarea\lv_textarea.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_tileview.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\tileview\lv_tileview.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_win.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\win\lv_win.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4863,11 +4733,6 @@
           <GroupName>Middlewares/LVGL/Widgets</GroupName>
           <Files>
             <File>
-              <FileName>lv_animimage.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\animimage\lv_animimage.c</FilePath>
-            </File>
-            <File>
               <FileName>lv_arc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Middlewares\lvgl\src\widgets\arc\lv_arc.c</FilePath>
@@ -4878,64 +4743,9 @@
               <FilePath>..\Middlewares\lvgl\src\widgets\bar\lv_bar.c</FilePath>
             </File>
             <File>
-              <FileName>lv_button.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\button\lv_button.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_buttonmatrix.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\buttonmatrix\lv_buttonmatrix.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_calendar.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\calendar\lv_calendar.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_calendar_header_arrow.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\calendar\lv_calendar_header_arrow.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_calendar_header_dropdown.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\calendar\lv_calendar_header_dropdown.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_canvas.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\canvas\lv_canvas.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_chart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\chart\lv_chart.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_checkbox.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\checkbox\lv_checkbox.c</FilePath>
-            </File>
-            <File>
               <FileName>lv_dropdown.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Middlewares\lvgl\src\widgets\dropdown\lv_dropdown.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_image.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\image\lv_image.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_imgbtn.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\imgbtn\lv_imgbtn.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_keyboard.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\keyboard\lv_keyboard.c</FilePath>
             </File>
             <File>
               <FileName>lv_label.c</FileName>
@@ -4953,84 +4763,14 @@
               <FilePath>..\Middlewares\lvgl\src\widgets\line\lv_line.c</FilePath>
             </File>
             <File>
-              <FileName>lv_list.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\list\lv_list.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_menu.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\menu\lv_menu.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_msgbox.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\msgbox\lv_msgbox.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_objx_templ.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\objx_templ\lv_objx_templ.c</FilePath>
-            </File>
-            <File>
               <FileName>lv_roller.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Middlewares\lvgl\src\widgets\roller\lv_roller.c</FilePath>
             </File>
             <File>
-              <FileName>lv_scale.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\scale\lv_scale.c</FilePath>
-            </File>
-            <File>
               <FileName>lv_slider.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Middlewares\lvgl\src\widgets\slider\lv_slider.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_span.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\span\lv_span.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_spinbox.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\spinbox\lv_spinbox.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_spinner.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\spinner\lv_spinner.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_switch.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\switch\lv_switch.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_table.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\table\lv_table.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_tabview.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\tabview\lv_tabview.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_textarea.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\textarea\lv_textarea.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_tileview.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\tileview\lv_tileview.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_win.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\widgets\win\lv_win.c</FilePath>
             </File>
           </Files>
         </Group>
