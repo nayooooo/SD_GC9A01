@@ -1461,7 +1461,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL</GroupName>
+          <GroupName>Middlewares/LVGL</GroupName>
           <Files>
             <File>
               <FileName>lv_init.c</FileName>
@@ -1471,7 +1471,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Port</GroupName>
+          <GroupName>Middlewares/LVGL/Port</GroupName>
           <Files>
             <File>
               <FileName>lv_port_disp.c</FileName>
@@ -1481,7 +1481,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/App</GroupName>
+          <GroupName>Middlewares/LVGL/App</GroupName>
           <Files>
             <File>
               <FileName>lvgl_app.c</FileName>
@@ -1491,7 +1491,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Core</GroupName>
+          <GroupName>Middlewares/LVGL/Core</GroupName>
           <Files>
             <File>
               <FileName>lv_group.c</FileName>
@@ -1561,10 +1561,10 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Dev</GroupName>
+          <GroupName>Middlewares/LVGL/Dev</GroupName>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Display</GroupName>
+          <GroupName>Middlewares/LVGL/Display</GroupName>
           <Files>
             <File>
               <FileName>lv_display.c</FileName>
@@ -1574,7 +1574,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Draw</GroupName>
+          <GroupName>Middlewares/LVGL/Draw</GroupName>
           <Files>
             <File>
               <FileName>lv_draw.c</FileName>
@@ -1635,101 +1635,6 @@
               <FileName>lv_image_decoder.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Middlewares\lvgl\src\draw\lv_image_decoder.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_arc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_arc.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_bg_img.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_bg_img.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_border.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_border.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_box_shadow.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_box_shadow.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_fill.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_fill.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_gradient.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_gradient.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_img.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_img.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_letter.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_letter.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_line.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_line.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_mask.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_mask.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_mask_rect.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_mask_rect.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_transform.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_transform.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_triangle.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_triangle.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_vector.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_vector.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_blend.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\blend\lv_draw_sw_blend.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_blend_to_argb8888.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\blend\lv_draw_sw_blend_to_argb8888.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_blend_to_rgb565.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\blend\lv_draw_sw_blend_to_rgb565.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_blend_to_rgb888.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\blend\lv_draw_sw_blend_to_rgb888.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sdl.c</FileName>
@@ -1851,10 +1756,105 @@
               <FileType>1</FileType>
               <FilePath>..\Middlewares\lvgl\src\draw\nxp\vglite\lv_vglite_utils.c</FilePath>
             </File>
+            <File>
+              <FileName>lv_draw_sw.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_arc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_arc.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_bg_img.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_bg_img.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_border.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_border.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_box_shadow.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_box_shadow.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_fill.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_fill.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_gradient.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_gradient.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_img.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_img.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_letter.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_letter.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_line.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_line.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_mask.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_mask.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_mask_rect.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_mask_rect.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_transform.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_transform.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_triangle.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_triangle.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_vector.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_vector.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_blend.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\blend\lv_draw_sw_blend.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_blend_to_rgb565.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\blend\lv_draw_sw_blend_to_rgb565.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_blend_to_argb8888.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\blend\lv_draw_sw_blend_to_argb8888.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_blend_to_rgb888.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\blend\lv_draw_sw_blend_to_rgb888.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Font</GroupName>
+          <GroupName>Middlewares/LVGL/Font</GroupName>
           <Files>
             <File>
               <FileName>lv_binfont_loader.c</FileName>
@@ -1884,7 +1884,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Indev</GroupName>
+          <GroupName>Middlewares/LVGL/Indev</GroupName>
           <Files>
             <File>
               <FileName>lv_indev.c</FileName>
@@ -1899,7 +1899,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Layouts</GroupName>
+          <GroupName>Middlewares/LVGL/Layouts</GroupName>
           <Files>
             <File>
               <FileName>lv_layout.c</FileName>
@@ -1919,7 +1919,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Libs</GroupName>
+          <GroupName>Middlewares/LVGL/Libs</GroupName>
           <Files>
             <File>
               <FileName>code128.c</FileName>
@@ -2074,7 +2074,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Misc</GroupName>
+          <GroupName>Middlewares/LVGL/Misc</GroupName>
           <Files>
             <File>
               <FileName>lv_anim.c</FileName>
@@ -2214,7 +2214,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Osal</GroupName>
+          <GroupName>Middlewares/LVGL/Osal</GroupName>
           <Files>
             <File>
               <FileName>lv_cmsis_rtos2.c</FileName>
@@ -2249,7 +2249,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Others</GroupName>
+          <GroupName>Middlewares/LVGL/Others</GroupName>
           <Files>
             <File>
               <FileName>lv_file_explorer.c</FileName>
@@ -2304,7 +2304,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Stdlib</GroupName>
+          <GroupName>Middlewares/LVGL/Stdlib</GroupName>
           <Files>
             <File>
               <FileName>lv_mem.c</FileName>
@@ -2334,7 +2334,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Themes</GroupName>
+          <GroupName>Middlewares/LVGL/Themes</GroupName>
           <Files>
             <File>
               <FileName>lv_theme.c</FileName>
@@ -2359,7 +2359,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Tick</GroupName>
+          <GroupName>Middlewares/LVGL/Tick</GroupName>
           <Files>
             <File>
               <FileName>lv_tick.c</FileName>
@@ -2369,7 +2369,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Widgets</GroupName>
+          <GroupName>Middlewares/LVGL/Widgets</GroupName>
           <Files>
             <File>
               <FileName>lv_animimage.c</FileName>
@@ -3952,7 +3952,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL</GroupName>
+          <GroupName>Middlewares/LVGL</GroupName>
           <Files>
             <File>
               <FileName>lv_init.c</FileName>
@@ -3962,7 +3962,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Port</GroupName>
+          <GroupName>Middlewares/LVGL/Port</GroupName>
           <Files>
             <File>
               <FileName>lv_port_disp.c</FileName>
@@ -3972,7 +3972,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/App</GroupName>
+          <GroupName>Middlewares/LVGL/App</GroupName>
           <Files>
             <File>
               <FileName>lvgl_app.c</FileName>
@@ -3982,7 +3982,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Core</GroupName>
+          <GroupName>Middlewares/LVGL/Core</GroupName>
           <Files>
             <File>
               <FileName>lv_group.c</FileName>
@@ -4052,10 +4052,10 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Dev</GroupName>
+          <GroupName>Middlewares/LVGL/Dev</GroupName>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Display</GroupName>
+          <GroupName>Middlewares/LVGL/Display</GroupName>
           <Files>
             <File>
               <FileName>lv_display.c</FileName>
@@ -4065,7 +4065,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Draw</GroupName>
+          <GroupName>Middlewares/LVGL/Draw</GroupName>
           <Files>
             <File>
               <FileName>lv_draw.c</FileName>
@@ -4126,101 +4126,6 @@
               <FileName>lv_image_decoder.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Middlewares\lvgl\src\draw\lv_image_decoder.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_arc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_arc.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_bg_img.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_bg_img.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_border.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_border.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_box_shadow.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_box_shadow.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_fill.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_fill.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_gradient.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_gradient.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_img.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_img.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_letter.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_letter.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_line.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_line.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_mask.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_mask.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_mask_rect.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_mask_rect.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_transform.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_transform.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_triangle.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_triangle.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_vector.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_vector.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_blend.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\blend\lv_draw_sw_blend.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_blend_to_argb8888.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\blend\lv_draw_sw_blend_to_argb8888.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_blend_to_rgb565.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\blend\lv_draw_sw_blend_to_rgb565.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_draw_sw_blend_to_rgb888.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Middlewares\lvgl\src\draw\sw\blend\lv_draw_sw_blend_to_rgb888.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sdl.c</FileName>
@@ -4342,10 +4247,105 @@
               <FileType>1</FileType>
               <FilePath>..\Middlewares\lvgl\src\draw\nxp\vglite\lv_vglite_utils.c</FilePath>
             </File>
+            <File>
+              <FileName>lv_draw_sw.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_arc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_arc.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_bg_img.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_bg_img.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_border.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_border.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_box_shadow.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_box_shadow.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_fill.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_fill.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_gradient.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_gradient.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_img.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_img.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_letter.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_letter.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_line.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_line.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_mask.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_mask.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_mask_rect.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_mask_rect.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_transform.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_transform.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_triangle.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_triangle.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_vector.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\lv_draw_sw_vector.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_blend.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\blend\lv_draw_sw_blend.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_blend_to_rgb565.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\blend\lv_draw_sw_blend_to_rgb565.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_blend_to_argb8888.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\blend\lv_draw_sw_blend_to_argb8888.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_draw_sw_blend_to_rgb888.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\lvgl\src\draw\sw\blend\lv_draw_sw_blend_to_rgb888.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Font</GroupName>
+          <GroupName>Middlewares/LVGL/Font</GroupName>
           <Files>
             <File>
               <FileName>lv_binfont_loader.c</FileName>
@@ -4375,7 +4375,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Indev</GroupName>
+          <GroupName>Middlewares/LVGL/Indev</GroupName>
           <Files>
             <File>
               <FileName>lv_indev.c</FileName>
@@ -4390,7 +4390,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Layouts</GroupName>
+          <GroupName>Middlewares/LVGL/Layouts</GroupName>
           <Files>
             <File>
               <FileName>lv_layout.c</FileName>
@@ -4410,7 +4410,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Libs</GroupName>
+          <GroupName>Middlewares/LVGL/Libs</GroupName>
           <Files>
             <File>
               <FileName>code128.c</FileName>
@@ -4565,7 +4565,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Misc</GroupName>
+          <GroupName>Middlewares/LVGL/Misc</GroupName>
           <Files>
             <File>
               <FileName>lv_anim.c</FileName>
@@ -4705,7 +4705,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Osal</GroupName>
+          <GroupName>Middlewares/LVGL/Osal</GroupName>
           <Files>
             <File>
               <FileName>lv_cmsis_rtos2.c</FileName>
@@ -4740,7 +4740,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Others</GroupName>
+          <GroupName>Middlewares/LVGL/Others</GroupName>
           <Files>
             <File>
               <FileName>lv_file_explorer.c</FileName>
@@ -4795,7 +4795,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Stdlib</GroupName>
+          <GroupName>Middlewares/LVGL/Stdlib</GroupName>
           <Files>
             <File>
               <FileName>lv_mem.c</FileName>
@@ -4825,7 +4825,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Themes</GroupName>
+          <GroupName>Middlewares/LVGL/Themes</GroupName>
           <Files>
             <File>
               <FileName>lv_theme.c</FileName>
@@ -4850,7 +4850,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Tick</GroupName>
+          <GroupName>Middlewares/LVGL/Tick</GroupName>
           <Files>
             <File>
               <FileName>lv_tick.c</FileName>
@@ -4860,7 +4860,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Middlewares/FFT/LVGL/Widgets</GroupName>
+          <GroupName>Middlewares/LVGL/Widgets</GroupName>
           <Files>
             <File>
               <FileName>lv_animimage.c</FileName>

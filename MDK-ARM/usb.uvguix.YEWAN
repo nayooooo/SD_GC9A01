@@ -3642,9 +3642,9 @@
       </Doc>
       <Doc>
         <Name>..\Middlewares\lvgl\lv_conf.h</Name>
-        <ColumnNumber>31</ColumnNumber>
-        <TopLine>323</TopLine>
-        <CurrentLine>339</CurrentLine>
+        <ColumnNumber>23</ColumnNumber>
+        <TopLine>434</TopLine>
+        <CurrentLine>355</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
