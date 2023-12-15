@@ -101,13 +101,4 @@ usb/lv_table.o: ..\Middlewares\lvgl\src\widgets\table\lv_table.c \
   ..\Middlewares\lvgl\src\widgets\table\..\label\..\..\font\lv_font.h \
   ..\Middlewares\lvgl\src\widgets\table\..\label\..\..\font\lv_symbol_def.h \
   ..\Middlewares\lvgl\src\widgets\table\..\label\..\..\misc\lv_text.h \
-  ..\Middlewares\lvgl\src\widgets\table\..\label\..\..\draw\lv_draw.h \
-  ..\Middlewares\lvgl\src\widgets\table\..\..\indev\lv_indev.h \
-  ..\Middlewares\lvgl\src\widgets\table\..\..\misc\lv_assert.h \
-  ..\Middlewares\lvgl\src\widgets\table\..\..\misc\lv_text.h \
-  ..\Middlewares\lvgl\src\widgets\table\..\..\misc\lv_text_ap.h \
-  ..\Middlewares\lvgl\src\widgets\table\..\label\..\..\core\..\misc\..\draw\lv_draw.h \
-  ..\Middlewares\lvgl\src\widgets\table\..\..\misc\lv_math.h \
-  ..\Middlewares\lvgl\src\widgets\table\..\..\stdlib\lv_sprintf.h \
-  ..\Middlewares\lvgl\src\widgets\table\..\..\draw\lv_draw.h \
-  ..\Middlewares\lvgl\src\widgets\table\..\..\stdlib\lv_string.h
+  ..\Middlewares\lvgl\src\widgets\table\..\label\..\..\draw\lv_draw.h

@@ -126,9 +126,6 @@ usb/lv_theme_basic.o: \
   ..\Middlewares\lvgl\src\widgets\animimage\lv_animimage.h \
   ..\Middlewares\lvgl\src\widgets\animimage\..\image\lv_image.h \
   ..\Middlewares\lvgl\src\widgets\animimage\..\image\..\..\lv_conf_internal.h \
-  ..\Middlewares\lvgl\src\widgets\animimage\..\image\..\..\core\lv_obj.h \
-  ..\Middlewares\lvgl\src\widgets\animimage\..\image\..\..\misc\lv_fs.h \
-  ..\Middlewares\lvgl\src\widgets\animimage\..\image\..\..\draw\lv_draw.h \
   ..\Middlewares\lvgl\src\widgets\arc\lv_arc.h \
   ..\Middlewares\lvgl\src\widgets\arc\..\..\lv_conf_internal.h \
   ..\Middlewares\lvgl\src\widgets\arc\..\..\core\lv_obj.h \
@@ -145,19 +142,12 @@ usb/lv_theme_basic.o: \
   ..\Middlewares\lvgl\src\widgets\bar\..\label\..\..\draw\lv_draw.h \
   ..\Middlewares\lvgl\src\widgets\button\lv_button.h \
   ..\Middlewares\lvgl\src\widgets\button\..\..\lv_conf_internal.h \
-  ..\Middlewares\lvgl\src\widgets\button\..\..\core\lv_obj.h \
   ..\Middlewares\lvgl\src\widgets\buttonmatrix\lv_buttonmatrix.h \
   ..\Middlewares\lvgl\src\widgets\buttonmatrix\..\..\lv_conf_internal.h \
-  ..\Middlewares\lvgl\src\widgets\buttonmatrix\..\..\core\lv_obj.h \
   ..\Middlewares\lvgl\src\widgets\calendar\lv_calendar.h \
   ..\Middlewares\lvgl\src\widgets\calendar\..\buttonmatrix\lv_buttonmatrix.h \
-  ..\Middlewares\lvgl\src\widgets\calendar\lv_calendar_header_arrow.h \
-  ..\Middlewares\lvgl\src\widgets\calendar\..\..\core\lv_obj.h \
-  ..\Middlewares\lvgl\src\widgets\calendar\lv_calendar_header_dropdown.h \
   ..\Middlewares\lvgl\src\widgets\canvas\lv_canvas.h \
   ..\Middlewares\lvgl\src\widgets\canvas\..\..\lv_conf_internal.h \
-  ..\Middlewares\lvgl\src\widgets\canvas\..\image\lv_image.h \
-  ..\Middlewares\lvgl\src\widgets\canvas\..\..\draw\lv_draw_image.h \
   ..\Middlewares\lvgl\src\widgets\chart\lv_chart.h \
   ..\Middlewares\lvgl\src\widgets\chart\..\..\lvgl.h \
   ..\Middlewares\lvgl\src\..\lvgl.h \
@@ -188,9 +178,6 @@ usb/lv_theme_basic.o: \
   ..\Middlewares\lvgl\src\widgets\roller\..\label\lv_label.h \
   ..\Middlewares\lvgl\src\widgets\scale\lv_scale.h \
   ..\Middlewares\lvgl\src\widgets\scale\..\..\lv_conf_internal.h \
-  ..\Middlewares\lvgl\src\widgets\scale\..\..\core\lv_obj.h \
-  ..\Middlewares\lvgl\src\widgets\scale\..\line\lv_line.h \
-  ..\Middlewares\lvgl\src\widgets\scale\..\image\lv_image.h \
   ..\Middlewares\lvgl\src\widgets\slider\lv_slider.h \
   ..\Middlewares\lvgl\src\widgets\slider\..\bar\lv_bar.h \
   ..\Middlewares\lvgl\src\widgets\span\lv_span.h \
@@ -323,5 +310,4 @@ usb/lv_theme_basic.o: \
   ..\Middlewares\lvgl\src\core\..\stdlib\builtin\..\..\osal\lv_os.h \
   ..\Middlewares\lvgl\src\core\..\stdlib\builtin\..\..\misc\lv_ll.h \
   ..\Middlewares\lvgl\src\core\..\tick\lv_tick.h \
-  ..\Middlewares\lvgl\src\core\..\layouts\lv_layout.h \
-  ..\Middlewares\lvgl\src\themes\basic\..\..\core\lv_global.h
+  ..\Middlewares\lvgl\src\core\..\layouts\lv_layout.h

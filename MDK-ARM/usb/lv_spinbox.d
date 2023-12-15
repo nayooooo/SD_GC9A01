@@ -102,7 +102,4 @@ usb/lv_spinbox.o: ..\Middlewares\lvgl\src\widgets\spinbox\lv_spinbox.c \
   ..\Middlewares\lvgl\src\widgets\spinbox\..\textarea\..\label\..\..\font\lv_font.h \
   ..\Middlewares\lvgl\src\widgets\spinbox\..\textarea\..\label\..\..\font\lv_symbol_def.h \
   ..\Middlewares\lvgl\src\widgets\spinbox\..\textarea\..\label\..\..\misc\lv_text.h \
-  ..\Middlewares\lvgl\src\widgets\spinbox\..\textarea\..\label\..\..\draw\lv_draw.h \
-  ..\Middlewares\lvgl\src\widgets\spinbox\..\..\misc\lv_assert.h \
-  ..\Middlewares\lvgl\src\widgets\spinbox\..\..\indev\lv_indev.h \
-  ..\Middlewares\lvgl\src\widgets\spinbox\..\..\stdlib\lv_string.h
+  ..\Middlewares\lvgl\src\widgets\spinbox\..\textarea\..\label\..\..\draw\lv_draw.h

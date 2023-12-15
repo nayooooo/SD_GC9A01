@@ -6,6 +6,7 @@
 "usb\main.o"
 "usb\gpio.o"
 "usb\spi.o"
+"usb\tim.o"
 "usb\usart.o"
 "usb\stm32f1xx_it.o"
 "usb\stm32f1xx_hal_msp.o"

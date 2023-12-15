@@ -107,9 +107,5 @@ usb/lv_list.o: ..\Middlewares\lvgl\src\widgets\list\lv_list.c \
   ..\Middlewares\lvgl\src\widgets\list\..\label\..\..\draw\lv_draw.h \
   ..\Middlewares\lvgl\src\widgets\list\..\image\lv_image.h \
   ..\Middlewares\lvgl\src\widgets\list\..\image\..\..\lv_conf_internal.h \
-  ..\Middlewares\lvgl\src\widgets\list\..\image\..\..\core\lv_obj.h \
-  ..\Middlewares\lvgl\src\widgets\list\..\image\..\..\misc\lv_fs.h \
-  ..\Middlewares\lvgl\src\widgets\list\..\image\..\..\draw\lv_draw.h \
   ..\Middlewares\lvgl\src\widgets\list\..\button\lv_button.h \
-  ..\Middlewares\lvgl\src\widgets\list\..\button\..\..\lv_conf_internal.h \
-  ..\Middlewares\lvgl\src\widgets\list\..\button\..\..\core\lv_obj.h
+  ..\Middlewares\lvgl\src\widgets\list\..\button\..\..\lv_conf_internal.h

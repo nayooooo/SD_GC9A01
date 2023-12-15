@@ -95,21 +95,4 @@ usb/lv_msgbox.o: ..\Middlewares\lvgl\src\widgets\msgbox\lv_msgbox.c \
   ..\Middlewares\lvgl\src\widgets\msgbox\..\..\core\..\indev\..\misc\lv_area.h \
   ..\Middlewares\lvgl\src\widgets\msgbox\..\..\core\..\indev\..\misc\lv_timer.h \
   ..\Middlewares\lvgl\src\widgets\msgbox\..\..\core\..\indev\..\misc\lv_event.h \
-  ..\Middlewares\lvgl\src\widgets\msgbox\..\..\core\lv_group.h \
-  ..\Middlewares\lvgl\src\widgets\msgbox\..\label\lv_label.h \
-  ..\Middlewares\lvgl\src\widgets\msgbox\..\label\..\..\lv_conf_internal.h \
-  ..\Middlewares\lvgl\src\widgets\msgbox\..\label\..\..\core\lv_obj.h \
-  ..\Middlewares\lvgl\src\widgets\msgbox\..\label\..\..\font\lv_font.h \
-  ..\Middlewares\lvgl\src\widgets\msgbox\..\label\..\..\font\lv_symbol_def.h \
-  ..\Middlewares\lvgl\src\widgets\msgbox\..\label\..\..\misc\lv_text.h \
-  ..\Middlewares\lvgl\src\widgets\msgbox\..\label\..\..\draw\lv_draw.h \
-  ..\Middlewares\lvgl\src\widgets\msgbox\..\button\lv_button.h \
-  ..\Middlewares\lvgl\src\widgets\msgbox\..\button\..\..\lv_conf_internal.h \
-  ..\Middlewares\lvgl\src\widgets\msgbox\..\button\..\..\core\lv_obj.h \
-  ..\Middlewares\lvgl\src\widgets\msgbox\..\buttonmatrix\lv_buttonmatrix.h \
-  ..\Middlewares\lvgl\src\widgets\msgbox\..\buttonmatrix\..\..\lv_conf_internal.h \
-  ..\Middlewares\lvgl\src\widgets\msgbox\..\buttonmatrix\..\..\core\lv_obj.h \
-  ..\Middlewares\lvgl\src\widgets\msgbox\..\..\misc\lv_assert.h \
-  ..\Middlewares\lvgl\src\widgets\msgbox\..\..\display\lv_display.h \
-  ..\Middlewares\lvgl\src\widgets\msgbox\..\..\layouts\flex\lv_flex.h \
-  ..\Middlewares\lvgl\src\widgets\msgbox\..\..\stdlib\lv_string.h
+  ..\Middlewares\lvgl\src\widgets\msgbox\..\..\core\lv_group.h

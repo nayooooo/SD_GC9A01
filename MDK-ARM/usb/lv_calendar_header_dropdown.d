@@ -96,19 +96,4 @@ usb/lv_calendar_header_dropdown.o: \
   ..\Middlewares\lvgl\src\widgets\calendar\..\..\core\..\indev\..\misc\lv_area.h \
   ..\Middlewares\lvgl\src\widgets\calendar\..\..\core\..\indev\..\misc\lv_timer.h \
   ..\Middlewares\lvgl\src\widgets\calendar\..\..\core\..\indev\..\misc\lv_event.h \
-  ..\Middlewares\lvgl\src\widgets\calendar\..\..\core\lv_group.h \
-  ..\Middlewares\lvgl\src\widgets\calendar\lv_calendar.h \
-  ..\Middlewares\lvgl\src\widgets\calendar\..\buttonmatrix\lv_buttonmatrix.h \
-  ..\Middlewares\lvgl\src\widgets\calendar\..\buttonmatrix\..\..\lv_conf_internal.h \
-  ..\Middlewares\lvgl\src\widgets\calendar\..\buttonmatrix\..\..\core\lv_obj.h \
-  ..\Middlewares\lvgl\src\widgets\calendar\lv_calendar_header_arrow.h \
-  ..\Middlewares\lvgl\src\widgets\calendar\..\dropdown\lv_dropdown.h \
-  ..\Middlewares\lvgl\src\widgets\calendar\..\dropdown\..\..\lv_conf_internal.h \
-  ..\Middlewares\lvgl\src\widgets\calendar\..\dropdown\..\label\lv_label.h \
-  ..\Middlewares\lvgl\src\widgets\calendar\..\dropdown\..\label\..\..\lv_conf_internal.h \
-  ..\Middlewares\lvgl\src\widgets\calendar\..\dropdown\..\label\..\..\core\lv_obj.h \
-  ..\Middlewares\lvgl\src\widgets\calendar\..\dropdown\..\label\..\..\font\lv_font.h \
-  ..\Middlewares\lvgl\src\widgets\calendar\..\dropdown\..\label\..\..\font\lv_symbol_def.h \
-  ..\Middlewares\lvgl\src\widgets\calendar\..\dropdown\..\label\..\..\misc\lv_text.h \
-  ..\Middlewares\lvgl\src\widgets\calendar\..\dropdown\..\label\..\..\draw\lv_draw.h \
-  ..\Middlewares\lvgl\src\widgets\calendar\..\..\layouts\flex\lv_flex.h
+  ..\Middlewares\lvgl\src\widgets\calendar\..\..\core\lv_group.h

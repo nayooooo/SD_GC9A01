@@ -103,4 +103,40 @@ usb/lv_sysmon.o: ..\Middlewares\lvgl\src\others\sysmon\lv_sysmon.c \
   ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\indev\..\misc\lv_area.h \
   ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\indev\..\misc\lv_timer.h \
   ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\indev\..\misc\lv_event.h \
-  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\lv_group.h
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\lv_group.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\core\lv_global.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\misc\lv_cache.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\misc\lv_cache_builtin.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\draw\sw\lv_draw_sw.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\display\..\draw\sw\..\lv_draw.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\display\..\draw\sw\..\..\misc\lv_area.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\display\..\draw\sw\..\..\display\lv_display.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\display\..\draw\sw\..\..\osal\lv_os.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\display\..\draw\sw\..\..\draw\lv_draw_vector.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\display\..\draw\..\misc\lv_array.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\display\..\draw\sw\blend\lv_draw_sw_blend.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\display\..\draw\sw\blend\..\lv_draw_sw_mask.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\display\..\draw\sw\..\..\misc\lv_math.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\display\..\draw\sw\blend\..\..\..\misc\lv_color.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\display\..\draw\sw\blend\..\..\..\misc\lv_area.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\display\..\draw\sw\blend\..\..\..\misc\lv_style.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\misc\lv_color_op.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\misc\lv_log.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\misc\lv_profiler_builtin.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\misc\lv_timer.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\others\sysmon\lv_sysmon.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\stdlib\builtin\lv_tlsf.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\stdlib\builtin\..\..\lv_conf_internal.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\stdlib\builtin\..\..\osal\lv_os.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\stdlib\builtin\..\..\misc\lv_ll.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\tick\lv_tick.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\others\observer\..\..\core\..\layouts\lv_layout.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\misc\lv_async.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\stdlib\lv_string.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\widgets\label\lv_label.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\widgets\label\..\..\lv_conf_internal.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\widgets\label\..\..\core\lv_obj.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\widgets\label\..\..\font\lv_font.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\widgets\label\..\..\font\lv_symbol_def.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\widgets\label\..\..\misc\lv_text.h \
+  ..\Middlewares\lvgl\src\others\sysmon\..\..\widgets\label\..\..\draw\lv_draw.h

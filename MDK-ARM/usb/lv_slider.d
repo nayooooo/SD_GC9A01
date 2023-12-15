@@ -116,7 +116,4 @@ usb/lv_slider.o: ..\Middlewares\lvgl\src\widgets\slider\lv_slider.c \
   ..\Middlewares\lvgl\src\widgets\slider\..\..\stdlib\lv_string.h \
   ..\Middlewares\lvgl\src\widgets\slider\..\..\misc\lv_math.h \
   ..\Middlewares\lvgl\src\widgets\slider\..\image\lv_image.h \
-  ..\Middlewares\lvgl\src\widgets\slider\..\image\..\..\lv_conf_internal.h \
-  ..\Middlewares\lvgl\src\widgets\slider\..\image\..\..\core\lv_obj.h \
-  ..\Middlewares\lvgl\src\widgets\slider\..\image\..\..\misc\lv_fs.h \
-  ..\Middlewares\lvgl\src\widgets\slider\..\image\..\..\draw\lv_draw.h
+  ..\Middlewares\lvgl\src\widgets\slider\..\image\..\..\lv_conf_internal.h

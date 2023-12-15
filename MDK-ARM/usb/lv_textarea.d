@@ -101,13 +101,4 @@ usb/lv_textarea.o: ..\Middlewares\lvgl\src\widgets\textarea\lv_textarea.c \
   ..\Middlewares\lvgl\src\widgets\textarea\..\label\..\..\font\lv_font.h \
   ..\Middlewares\lvgl\src\widgets\textarea\..\label\..\..\font\lv_symbol_def.h \
   ..\Middlewares\lvgl\src\widgets\textarea\..\label\..\..\misc\lv_text.h \
-  ..\Middlewares\lvgl\src\widgets\textarea\..\label\..\..\draw\lv_draw.h \
-  ..\Middlewares\lvgl\src\widgets\textarea\..\..\core\lv_group.h \
-  ..\Middlewares\lvgl\src\widgets\textarea\..\..\core\lv_refr.h \
-  ..\Middlewares\lvgl\src\widgets\textarea\..\..\indev\lv_indev.h \
-  ..\Middlewares\lvgl\src\widgets\textarea\..\..\draw\lv_draw.h \
-  ..\Middlewares\lvgl\src\widgets\textarea\..\..\misc\lv_assert.h \
-  ..\Middlewares\lvgl\src\widgets\textarea\..\..\misc\lv_anim.h \
-  ..\Middlewares\lvgl\src\widgets\textarea\..\..\misc\lv_text.h \
-  ..\Middlewares\lvgl\src\widgets\textarea\..\..\misc\lv_math.h \
-  ..\Middlewares\lvgl\src\widgets\textarea\..\..\stdlib\lv_string.h
+  ..\Middlewares\lvgl\src\widgets\textarea\..\label\..\..\draw\lv_draw.h

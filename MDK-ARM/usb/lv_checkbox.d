@@ -96,9 +96,4 @@ usb/lv_checkbox.o: ..\Middlewares\lvgl\src\widgets\checkbox\lv_checkbox.c \
   ..\Middlewares\lvgl\src\widgets\checkbox\..\..\core\..\indev\..\misc\lv_area.h \
   ..\Middlewares\lvgl\src\widgets\checkbox\..\..\core\..\indev\..\misc\lv_timer.h \
   ..\Middlewares\lvgl\src\widgets\checkbox\..\..\core\..\indev\..\misc\lv_event.h \
-  ..\Middlewares\lvgl\src\widgets\checkbox\..\..\core\lv_group.h \
-  ..\Middlewares\lvgl\src\widgets\checkbox\..\..\misc\lv_assert.h \
-  ..\Middlewares\lvgl\src\widgets\checkbox\..\..\misc\lv_text_ap.h \
-  ..\Middlewares\lvgl\src\widgets\checkbox\..\..\core\..\misc\..\draw\lv_draw.h \
-  ..\Middlewares\lvgl\src\widgets\checkbox\..\..\draw\lv_draw.h \
-  ..\Middlewares\lvgl\src\widgets\checkbox\..\..\stdlib\lv_string.h
+  ..\Middlewares\lvgl\src\widgets\checkbox\..\..\core\lv_group.h

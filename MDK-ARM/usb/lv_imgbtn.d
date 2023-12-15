@@ -95,5 +95,4 @@ usb/lv_imgbtn.o: ..\Middlewares\lvgl\src\widgets\imgbtn\lv_imgbtn.c \
   ..\Middlewares\lvgl\src\widgets\imgbtn\..\..\core\..\indev\..\misc\lv_area.h \
   ..\Middlewares\lvgl\src\widgets\imgbtn\..\..\core\..\indev\..\misc\lv_timer.h \
   ..\Middlewares\lvgl\src\widgets\imgbtn\..\..\core\..\indev\..\misc\lv_event.h \
-  ..\Middlewares\lvgl\src\widgets\imgbtn\..\..\core\lv_group.h \
-  ..\Middlewares\lvgl\src\widgets\imgbtn\..\..\stdlib\lv_string.h
+  ..\Middlewares\lvgl\src\widgets\imgbtn\..\..\core\lv_group.h

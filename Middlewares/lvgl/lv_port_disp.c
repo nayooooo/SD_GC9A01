@@ -82,7 +82,6 @@ void lv_port_disp_init(void)
 //    static lv_color_t buf_3_1[MY_DISP_HOR_RES * MY_DISP_VER_RES];
 //    static lv_color_t buf_3_2[MY_DISP_HOR_RES * MY_DISP_VER_RES];
 //    lv_display_set_draw_buffers(disp, buf_3_1, buf_3_2, sizeof(buf_3_1), LV_DISPLAY_RENDER_MODE_DIRECT);
-
 }
 
 /**********************

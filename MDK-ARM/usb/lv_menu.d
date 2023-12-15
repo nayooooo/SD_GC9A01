@@ -95,21 +95,4 @@ usb/lv_menu.o: ..\Middlewares\lvgl\src\widgets\menu\lv_menu.c \
   ..\Middlewares\lvgl\src\widgets\menu\..\..\core\..\indev\..\misc\lv_area.h \
   ..\Middlewares\lvgl\src\widgets\menu\..\..\core\..\indev\..\misc\lv_timer.h \
   ..\Middlewares\lvgl\src\widgets\menu\..\..\core\..\indev\..\misc\lv_event.h \
-  ..\Middlewares\lvgl\src\widgets\menu\..\..\core\lv_group.h \
-  ..\Middlewares\lvgl\src\widgets\menu\..\..\layouts\lv_layout.h \
-  ..\Middlewares\lvgl\src\widgets\menu\..\..\stdlib\lv_string.h \
-  ..\Middlewares\lvgl\src\widgets\menu\..\label\lv_label.h \
-  ..\Middlewares\lvgl\src\widgets\menu\..\label\..\..\lv_conf_internal.h \
-  ..\Middlewares\lvgl\src\widgets\menu\..\label\..\..\core\lv_obj.h \
-  ..\Middlewares\lvgl\src\widgets\menu\..\label\..\..\font\lv_font.h \
-  ..\Middlewares\lvgl\src\widgets\menu\..\label\..\..\font\lv_symbol_def.h \
-  ..\Middlewares\lvgl\src\widgets\menu\..\label\..\..\misc\lv_text.h \
-  ..\Middlewares\lvgl\src\widgets\menu\..\label\..\..\draw\lv_draw.h \
-  ..\Middlewares\lvgl\src\widgets\menu\..\button\lv_button.h \
-  ..\Middlewares\lvgl\src\widgets\menu\..\button\..\..\lv_conf_internal.h \
-  ..\Middlewares\lvgl\src\widgets\menu\..\button\..\..\core\lv_obj.h \
-  ..\Middlewares\lvgl\src\widgets\menu\..\image\lv_image.h \
-  ..\Middlewares\lvgl\src\widgets\menu\..\image\..\..\lv_conf_internal.h \
-  ..\Middlewares\lvgl\src\widgets\menu\..\image\..\..\core\lv_obj.h \
-  ..\Middlewares\lvgl\src\widgets\menu\..\image\..\..\misc\lv_fs.h \
-  ..\Middlewares\lvgl\src\widgets\menu\..\image\..\..\draw\lv_draw.h
+  ..\Middlewares\lvgl\src\widgets\menu\..\..\core\lv_group.h
