@@ -3,6 +3,8 @@
 
 #include "stm32f1xx_hal.h"
 
+#include "./cubemx/inc/main.h"
+
 typedef uint8_t u8;
 typedef uint16_t u16;
 typedef uint32_t u32;
@@ -14,24 +16,23 @@ typedef uint32_t u32;
 #define LCD_W 240
 #define LCD_H 240
 
+#define DATAOUT(x)  GPIOC->BSRR=(((~x)&0x000000FF)<<16)|x
+//#define DATAOUT(x)  {GPIOC->BSRR=((~x)<<16)|x}
+#define DATAIN      ((GPIOC->IDR)&0xFF)
 
-#define DATAOUT(x)	{GPIOA->BSRR=((x&0x0000000F)|0x000F0000); \
-						GPIOB->BSRR=(((x&0x000000F0)<<4)|0x0F000000);} //�������
-#define DATAIN     ((((GPIOB->IDR)&0x0F00)>>4)|((GPIOA->IDR)&0x000F));   //��������
+#define	LCD_RES_Set()	LCD_RES_GPIO_Port->BSRR=LCD_RES_Pin
+#define	LCD_CS_Set()    LCD_CS_GPIO_Port->BSRR=LCD_CS_Pin
+#define	LCD_DC_Set()    LCD_DC_GPIO_Port->BSRR=LCD_DC_Pin
+#define	LCD_WR_Set()	LCD_WR_GPIO_Port->BSRR=LCD_WR_Pin
+#define	LCD_RD_Set()	LCD_RD_GPIO_Port->BSRR=LCD_RD_Pin
+#define	LCD_BLK_Set()	LCD_BLK_GPIO_Port->BSRR=LCD_BLK_Pin
 
-#define	LCD_RES_Set()	GPIOC->BSRR=1<<13    //��λ			    PC13
-#define	LCD_CS_Set()  GPIOA->BSRR=1<<8    //Ƭѡ�˿�    	PA8
-#define	LCD_DC_Set()  GPIOB->BSRR=1<<4    //����/����     PB4
-#define	LCD_WR_Set()	GPIOB->BSRR=1<<5    //д����	      PB5
-#define	LCD_RD_Set()	GPIOB->BSRR=1<<3    //������		    PB3
-#define	LCD_BLK_Set()	GPIOA->BSRR=1<<15    //�������		  PA15
-
-#define	LCD_RES_Clr()	GPIOC->BRR=1<<13     //��λ				PC13
-#define	LCD_CS_Clr()  GPIOA->BRR=1<<8    //Ƭѡ�˿�    PA8
-#define	LCD_DC_Clr()	GPIOB->BRR=1<<4     //����/����   PB4
-#define	LCD_WR_Clr()	GPIOB->BRR=1<<5     //д����	    PB5
-#define	LCD_RD_Clr()	GPIOB->BRR=1<<3     //������	    PB3
-#define	LCD_BLK_Clr()	GPIOA->BRR=1<<15     //�������    PA15
+#define	LCD_RES_Clr()	LCD_RES_GPIO_Port->BRR=LCD_RES_Pin
+#define	LCD_CS_Clr()    LCD_CS_GPIO_Port->BRR=LCD_CS_Pin
+#define	LCD_DC_Clr()	LCD_DC_GPIO_Port->BRR=LCD_DC_Pin
+#define	LCD_WR_Clr()	LCD_WR_GPIO_Port->BRR=LCD_WR_Pin
+#define	LCD_RD_Clr()	LCD_RD_GPIO_Port->BRR=LCD_RD_Pin
+#define	LCD_BLK_Clr()	LCD_BLK_GPIO_Port->BRR=LCD_BLK_Pin
 
 
 

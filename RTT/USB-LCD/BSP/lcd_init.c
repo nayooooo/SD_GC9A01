@@ -13,26 +13,60 @@ static void delay_ms(u32 nms)
 
 static void LCD_GPIO_Init(void)
 {
-//	GPIO_InitTypeDef  GPIO_InitStructure;
-// 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB|RCC_APB2Periph_AFIO, ENABLE);	 //Ê¹ÄÜA¶Ë¿ÚÊ±ÖÓ
-//	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5|GPIO_Pin_6|GPIO_Pin_7;	 
-//	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable,ENABLE);
-// 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; 		 //ÍÆÍìÊä³ö
-//	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;//ËÙ¶È50MHz
-// 	GPIO_Init(GPIOA, &GPIO_InitStructure);	  //³õÊ¼»¯GPIOA
-// 	GPIO_SetBits(GPIOA,GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5|GPIO_Pin_6|GPIO_Pin_7);
+    GPIO_InitTypeDef GPIO_InitStruct = {0};
 
-//	GPIO_InitStructure.GPIO_Pin =GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5|GPIO_Pin_6|GPIO_Pin_7|GPIO_Pin_8; 
-// 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; 		 //ÍÆÍìÊä³ö
-//	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;//ËÙ¶È50MHz
-// 	GPIO_Init(GPIOB, &GPIO_InitStructure);	  //³õÊ¼»¯GPIOA
-//	GPIO_SetBits(GPIOB,GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5|GPIO_Pin_6|GPIO_Pin_7|GPIO_Pin_8);
+      /* GPIO Ports Clock Enable */
+      __HAL_RCC_GPIOC_CLK_ENABLE();
+      __HAL_RCC_GPIOD_CLK_ENABLE();
+      __HAL_RCC_GPIOA_CLK_ENABLE();
+      __HAL_RCC_GPIOB_CLK_ENABLE();
+
+      /*Configure GPIO pin Output Level */
+      HAL_GPIO_WritePin(GPIOC, LCD_DB0_Pin|LCD_DB1_Pin|LCD_DB2_Pin|LCD_DB3_Pin
+                              |LCD_DB4_Pin|LCD_DB5_Pin|LCD_DB6_Pin|LCD_DB7_Pin, GPIO_PIN_SET);
+
+      /*Configure GPIO pin Output Level */
+      HAL_GPIO_WritePin(LCD_RES_GPIO_Port, LCD_RES_Pin, GPIO_PIN_SET);
+
+      /*Configure GPIO pin Output Level */
+      HAL_GPIO_WritePin(GPIOB, LCD_BLK_Pin|LCD_CS_Pin|LCD_DC_Pin|LCD_WR_Pin
+                              |LCD_RD_Pin, GPIO_PIN_SET);
+
+      /*Configure GPIO pins : LCD_DB0_Pin LCD_DB1_Pin LCD_DB2_Pin LCD_DB3_Pin
+                               LCD_DB4_Pin LCD_DB5_Pin LCD_DB6_Pin LCD_DB7_Pin */
+      GPIO_InitStruct.Pin = LCD_DB0_Pin|LCD_DB1_Pin|LCD_DB2_Pin|LCD_DB3_Pin
+                              |LCD_DB4_Pin|LCD_DB5_Pin|LCD_DB6_Pin|LCD_DB7_Pin;
+      GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+      GPIO_InitStruct.Pull = GPIO_NOPULL;
+      GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+      HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+      /*Configure GPIO pin : LCD_RES_Pin */
+      GPIO_InitStruct.Pin = LCD_RES_Pin;
+      GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+      GPIO_InitStruct.Pull = GPIO_NOPULL;
+      GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+      HAL_GPIO_Init(LCD_RES_GPIO_Port, &GPIO_InitStruct);
+
+      /*Configure GPIO pin : LCD_BLK_Pin */
+      GPIO_InitStruct.Pin = LCD_BLK_Pin;
+      GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+      GPIO_InitStruct.Pull = GPIO_NOPULL;
+      GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+      HAL_GPIO_Init(LCD_BLK_GPIO_Port, &GPIO_InitStruct);
+
+      /*Configure GPIO pins : LCD_CS_Pin LCD_DC_Pin LCD_WR_Pin LCD_RD_Pin */
+      GPIO_InitStruct.Pin = LCD_CS_Pin|LCD_DC_Pin|LCD_WR_Pin|LCD_RD_Pin;
+      GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+      GPIO_InitStruct.Pull = GPIO_NOPULL;
+      GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+      HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 }
 
 /******************************************************************************
-      º¯ÊýËµÃ÷£ºLCD´®ÐÐÊý¾ÝÐ´Èëº¯Êý
-      Èë¿ÚÊý¾Ý£ºdat  ÒªÐ´ÈëµÄ´®ÐÐÊý¾Ý
-      ·µ»ØÖµ£º  ÎÞ
+      ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½LCDï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ëº¯ï¿½ï¿½
+      ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½dat  ÒªÐ´ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+      ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½  ï¿½ï¿½
 ******************************************************************************/
 static void LCD_Writ_Bus(u8 dat) 
 {	
@@ -43,9 +77,9 @@ static void LCD_Writ_Bus(u8 dat)
 
 
 /******************************************************************************
-      º¯ÊýËµÃ÷£ºLCDÐ´ÈëÊý¾Ý
-      Èë¿ÚÊý¾Ý£ºdat Ð´ÈëµÄÊý¾Ý
-      ·µ»ØÖµ£º  ÎÞ
+      ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½LCDÐ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+      ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½dat Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+      ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½  ï¿½ï¿½
 ******************************************************************************/
 void LCD_WR_DATA8(u8 dat)
 {
@@ -57,9 +91,9 @@ void LCD_WR_DATA8(u8 dat)
 
 
 /******************************************************************************
-      º¯ÊýËµÃ÷£ºLCDÐ´ÈëÊý¾Ý
-      Èë¿ÚÊý¾Ý£ºdat Ð´ÈëµÄÊý¾Ý
-      ·µ»ØÖµ£º  ÎÞ
+      ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½LCDÐ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+      ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½dat Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+      ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½  ï¿½ï¿½
 ******************************************************************************/
 void LCD_WR_DATA8_Faster(u8* dat, u32 size)
 {
@@ -73,9 +107,9 @@ void LCD_WR_DATA8_Faster(u8* dat, u32 size)
 
 
 /******************************************************************************
-      º¯ÊýËµÃ÷£ºLCDÐ´ÈëÊý¾Ý
-      Èë¿ÚÊý¾Ý£ºdat Ð´ÈëµÄÊý¾Ý
-      ·µ»ØÖµ£º  ÎÞ
+      ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½LCDÐ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+      ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½dat Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+      ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½  ï¿½ï¿½
 ******************************************************************************/
 void LCD_WR_DATA(u16 dat)
 {
@@ -88,9 +122,9 @@ void LCD_WR_DATA(u16 dat)
 
 
 /******************************************************************************
-      º¯ÊýËµÃ÷£ºLCDÐ´ÈëÊý¾Ý
-      Èë¿ÚÊý¾Ý£ºdat Ð´ÈëµÄÊý¾Ý
-      ·µ»ØÖµ£º  ÎÞ
+      ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½LCDÐ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+      ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½dat Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+      ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½  ï¿½ï¿½
 ******************************************************************************/
 void LCD_WR_DATA_Faster(u16* dat, u32 size)
 {
@@ -105,45 +139,45 @@ void LCD_WR_DATA_Faster(u16* dat, u32 size)
 
 
 /******************************************************************************
-      º¯ÊýËµÃ÷£ºLCDÐ´ÈëÃüÁî
-      Èë¿ÚÊý¾Ý£ºdat Ð´ÈëµÄÃüÁî
-      ·µ»ØÖµ£º  ÎÞ
+      ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½LCDÐ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+      ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½dat Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+      ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½  ï¿½ï¿½
 ******************************************************************************/
 void LCD_WR_REG(u8 dat)
 {
-	LCD_DC_Clr();//Ð´ÃüÁî
+	LCD_DC_Clr();//Ð´ï¿½ï¿½ï¿½ï¿½
 	LCD_CS_Clr();
 	LCD_Writ_Bus(dat);
 	LCD_CS_Set();
 }
 
 /******************************************************************************
-      º¯ÊýËµÃ÷£ºÉèÖÃÆðÊ¼ºÍ½áÊøµØÖ·
-      Èë¿ÚÊý¾Ý£ºx1,x2 ÉèÖÃÁÐµÄÆðÊ¼ºÍ½áÊøµØÖ·
-                y1,y2 ÉèÖÃÐÐµÄÆðÊ¼ºÍ½áÊøµØÖ·
-      ·µ»ØÖµ£º  ÎÞ
+      ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½Í½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·
+      ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½x1,x2 ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½Ê¼ï¿½Í½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·
+                y1,y2 ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½Ê¼ï¿½Í½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·
+      ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½  ï¿½ï¿½
 ******************************************************************************/
 void LCD_Area_Set(u16 x1,u16 y1,u16 x2,u16 y2)
 {
-		LCD_WR_REG(0x2a);//ÁÐµØÖ·ÉèÖÃ
+		LCD_WR_REG(0x2a);//ï¿½Ðµï¿½Ö·ï¿½ï¿½ï¿½ï¿½
 		LCD_WR_DATA(x1);
 		LCD_WR_DATA(x2);
-		LCD_WR_REG(0x2b);//ÐÐµØÖ·ÉèÖÃ
+		LCD_WR_REG(0x2b);//ï¿½Ðµï¿½Ö·ï¿½ï¿½ï¿½ï¿½
 		LCD_WR_DATA(y1);
 		LCD_WR_DATA(y2);
-		LCD_WR_REG(0x2c);//´¢´æÆ÷Ð´
+		LCD_WR_REG(0x2c);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´
 }
 
 void LCD_Init(void)
 {
-	LCD_GPIO_Init();//³õÊ¼»¯GPIO
+	LCD_GPIO_Init();//ï¿½ï¿½Ê¼ï¿½ï¿½GPIO
 	
-	LCD_RES_Clr();//¸´Î»
+	LCD_RES_Clr();//ï¿½ï¿½Î»
 	delay_ms(100);
 	LCD_RES_Set();
 	delay_ms(100);
 	
-	LCD_BLK_Set();//´ò¿ª±³¹â
+	LCD_BLK_Set();//ï¿½ò¿ª±ï¿½ï¿½ï¿½
   delay_ms(100);
 	
 	LCD_WR_REG(0xEF);
