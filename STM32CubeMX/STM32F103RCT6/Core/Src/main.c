@@ -19,13 +19,20 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "i2c.h"
-#include "sdio.h"
 #include "spi.h"
 #include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+
+#include <stdio.h>
+
+#include "malloc.h"
+
+#include "lcd.h"
+
+#include "at_user.h"
 
 /* USER CODE END Includes */
 
@@ -52,6 +59,27 @@
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
+
+static void LCD_Test_Fps(void)
+{
+	uint32_t lcd_frames = 0;
+	uint32_t lcd_test_fps_start_time;
+	uint32_t lcd_test_time = 0;
+	
+	lcd_test_fps_start_time = HAL_GetTick();
+	
+	while (lcd_test_time <= 10000) {
+		LCD_Fill(0, 0, LCD_W, LCD_H, lcd_frames++);
+		lcd_test_time = HAL_GetTick() - lcd_test_fps_start_time;
+	}
+	float lcd_fps = (float)lcd_frames / ((float)lcd_test_time / 1000);
+	LCD_ShowString(20, 104, (const u8*)"lcd test ok!", RED, WHITE, 16, 0);
+	LCD_ShowString(20, 120, (const u8*)"test time: 10s", RED, WHITE, 16, 0);
+	LCD_ShowString(20, 136, (const u8*)"total frame: ", RED, WHITE, 16, 0);
+	LCD_ShowIntNum(134, 136, lcd_frames, 5, RED, WHITE, 16);
+	LCD_ShowString(20, 152, (const u8*)"lcd fps: ", RED, WHITE, 16, 0);
+	LCD_ShowFloatNum1(92, 152, lcd_fps, 5, RED, WHITE, 16);
+}
 
 /* USER CODE END PFP */
 
@@ -90,18 +118,35 @@ int main(void)
   MX_GPIO_Init();
   MX_SPI1_Init();
   MX_USART1_UART_Init();
-  MX_USB_PCD_Init();
-  MX_SDIO_SD_Init();
   MX_I2C1_Init();
-  MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
+  
+  printf("\r\n");
+  
+  my_mem_init(SRAMIN);
+  
+  if (at_user_init() == AT_EOK) {
+	  printf("at user initialize ok!\r\n");
+  } else {
+	  printf("at user initialize failed!\r\n");
+  }
+  
+  LCD_Init();
+  LCD_Fill(0, 0, LCD_H, LCD_W, WHITE);
+  
+  printf("STM32F103C8T6 initialize OK!\r\n");
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  
+  LCD_Test_Fps();
+  
   while (1)
   {
+	  at.handleAuto(&at);
+	  
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -117,7 +162,6 @@ void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
-  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
 
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
@@ -144,12 +188,6 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USB;
-  PeriphClkInit.UsbClockSelection = RCC_USBCLKSOURCE_PLL_DIV1_5;
-  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {
     Error_Handler();
   }
