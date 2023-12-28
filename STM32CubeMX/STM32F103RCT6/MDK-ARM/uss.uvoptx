@@ -17,7 +17,7 @@
 		<dwHighDateTime>0</dwHighDateTime>
 	</DaveTm>
 	<Target>
-		<TargetName>temp</TargetName>
+		<TargetName>uss</TargetName>
 		<ToolsetNumber>0x4</ToolsetNumber>
 		<ToolsetName>ARM-ADS</ToolsetName>
 		<TargetOption>
