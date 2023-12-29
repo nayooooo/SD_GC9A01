@@ -30,6 +30,7 @@
 
 #include "malloc.h"
 
+#include "ws2812b.h"
 #include "lcd.h"
 
 #include "at_user.h"
@@ -131,8 +132,12 @@ int main(void)
 	  printf("at user initialize failed!\r\n");
   }
   
+  ws2812b_init();
+  ws2812b_clear_rgb_buff();
+  ws2812b_send_node(ws_rgb);
+  
   LCD_Init();
-  LCD_Fill(0, 0, LCD_H, LCD_W, WHITE);
+  LCD_Fill(0, 0, LCD_H, LCD_W, BLACK);
   
   printf("STM32F103C8T6 initialize OK!\r\n");
 
@@ -141,11 +146,27 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   
-  LCD_Test_Fps();
+//  LCD_Test_Fps();
   
   while (1)
   {
 	  at.handleAuto(&at);
+
+	  for (int i = 0; i < 256; i++) {
+		  ws_rgb[0].r++;
+		  ws2812b_send_node(ws_rgb);
+		  HAL_Delay(10);
+	  }
+	  for (int i = 0; i < 256; i++) {
+		  ws_rgb[0].g++;
+		  ws2812b_send_node(ws_rgb);
+		  HAL_Delay(10);
+	  }
+	  for (int i = 0; i < 256; i++) {
+		  ws_rgb[0].b++;
+		  ws2812b_send_node(ws_rgb);
+		  HAL_Delay(10);
+	  }
 	  
     /* USER CODE END WHILE */
 

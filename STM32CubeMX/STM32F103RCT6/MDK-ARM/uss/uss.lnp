@@ -31,6 +31,7 @@
 "uss\at_stream_device.o"
 "uss\lcd.o"
 "uss\lcd_init.o"
+"uss\ws2812b.o"
 --strict --scatter "uss\uss.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

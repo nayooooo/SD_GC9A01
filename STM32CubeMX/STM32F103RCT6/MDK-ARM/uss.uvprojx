@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xE</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../Applications/At/include;..\Middlewares\Third_Party\mem\include;../Middlewares/Third_Party/At/include;../Middlewares/Third_Party/LCD/include</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../Applications/At/include;../Middlewares/Third_Party/mem/include;../Middlewares/Third_Party/At/include;../Middlewares/Third_Party/LCD/include;..\Middlewares\Third_Party\WS2812B\include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -578,6 +578,16 @@
               <FileName>lcd_init.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Middlewares\Third_Party\LCD\lcd_init.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Middlewares/WS2812B</GroupName>
+          <Files>
+            <File>
+              <FileName>ws2812b.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\WS2812B\ws2812b.c</FilePath>
             </File>
           </Files>
         </Group>
