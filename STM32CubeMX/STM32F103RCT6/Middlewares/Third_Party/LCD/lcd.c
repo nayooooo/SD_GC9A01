@@ -248,18 +248,21 @@ void LCD_ShowFloatNum1(u16 x,u16 y,float num,u8 len,u16 fc,u16 bc,u8 sizey)
 ******************************************************************************/
 void LCD_ShowPicture(u16 x,u16 y,u16 length,u16 width,const u8 pic[])
 {
-	u16 i,j;
-	u32 k=0;
+//	u16 i,j;
+//	u32 k=0;
+//	LCD_Area_Set(x,y,x+length-1,y+width-1);
+//	for(i=0;i<length;i++)
+//	{
+//		for(j=0;j<width;j++)
+//		{
+//			LCD_WR_DATA8(pic[k*2+1]);
+//			LCD_WR_DATA8(pic[k*2]);
+//			k++;
+//		}
+//	}
+	
 	LCD_Area_Set(x,y,x+length-1,y+width-1);
-	for(i=0;i<length;i++)
-	{
-		for(j=0;j<width;j++)
-		{
-			LCD_WR_DATA8(pic[k*2]);
-			LCD_WR_DATA8(pic[k*2+1]);
-			k++;
-		}
-	}			
+	LCD_WR_DATA8_Faster_LVGL((u8*)pic, length * width);
 }
 
 

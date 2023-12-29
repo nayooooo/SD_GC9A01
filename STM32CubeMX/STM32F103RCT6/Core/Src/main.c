@@ -20,6 +20,7 @@
 #include "main.h"
 #include "i2c.h"
 #include "spi.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -31,9 +32,11 @@
 #include "malloc.h"
 
 #include "ws2812b.h"
-#include "lcd.h"
 
 #include "at_user.h"
+#include "lvgl.h"
+#include "lv_port_disp.h"
+#include "lv_port_indev.h"
 
 /* USER CODE END Includes */
 
@@ -55,32 +58,13 @@
 
 /* USER CODE BEGIN PV */
 
+static lv_obj_t* scr = NULL;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
-
-static void LCD_Test_Fps(void)
-{
-	uint32_t lcd_frames = 0;
-	uint32_t lcd_test_fps_start_time;
-	uint32_t lcd_test_time = 0;
-	
-	lcd_test_fps_start_time = HAL_GetTick();
-	
-	while (lcd_test_time <= 10000) {
-		LCD_Fill(0, 0, LCD_W, LCD_H, lcd_frames++);
-		lcd_test_time = HAL_GetTick() - lcd_test_fps_start_time;
-	}
-	float lcd_fps = (float)lcd_frames / ((float)lcd_test_time / 1000);
-	LCD_ShowString(20, 104, (const u8*)"lcd test ok!", RED, WHITE, 16, 0);
-	LCD_ShowString(20, 120, (const u8*)"test time: 10s", RED, WHITE, 16, 0);
-	LCD_ShowString(20, 136, (const u8*)"total frame: ", RED, WHITE, 16, 0);
-	LCD_ShowIntNum(134, 136, lcd_frames, 5, RED, WHITE, 16);
-	LCD_ShowString(20, 152, (const u8*)"lcd fps: ", RED, WHITE, 16, 0);
-	LCD_ShowFloatNum1(92, 152, lcd_fps, 5, RED, WHITE, 16);
-}
 
 /* USER CODE END PFP */
 
@@ -120,6 +104,7 @@ int main(void)
   MX_SPI1_Init();
   MX_USART1_UART_Init();
   MX_I2C1_Init();
+  MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
   
   printf("\r\n");
@@ -136,8 +121,10 @@ int main(void)
   ws2812b_clear_rgb_buff();
   ws2812b_send_node(ws_rgb);
   
-  LCD_Init();
-  LCD_Fill(0, 0, LCD_H, LCD_W, BLACK);
+  lv_init();
+  lv_port_disp_init();
+  lv_port_indev_init();
+  scr = lv_scr_act();
   
   printf("STM32F103C8T6 initialize OK!\r\n");
 
@@ -146,27 +133,19 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   
-//  LCD_Test_Fps();
+  lv_obj_t* btn = lv_btn_create(scr);
+  lv_obj_set_size(btn, 40, 20);
+  lv_obj_set_pos(btn, 50, 50);
+  lv_obj_t* arc = lv_arc_create(scr);
+  lv_obj_set_pos(arc, 50, 100);
   
   while (1)
   {
 	  at.handleAuto(&at);
-
-	  for (int i = 0; i < 256; i++) {
-		  ws_rgb[0].r++;
-		  ws2812b_send_node(ws_rgb);
-		  HAL_Delay(10);
-	  }
-	  for (int i = 0; i < 256; i++) {
-		  ws_rgb[0].g++;
-		  ws2812b_send_node(ws_rgb);
-		  HAL_Delay(10);
-	  }
-	  for (int i = 0; i < 256; i++) {
-		  ws_rgb[0].b++;
-		  ws2812b_send_node(ws_rgb);
-		  HAL_Delay(10);
-	  }
+	  
+	  lv_timer_handler();
+	  
+	  HAL_Delay(1);
 	  
     /* USER CODE END WHILE */
 
