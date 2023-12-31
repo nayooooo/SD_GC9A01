@@ -4,7 +4,7 @@
 #include "main.h"
 
 // 如果使用FATFS，此宏定义无效
-#define USE_HORIZONTAL 1  //设置横屏或者竖屏显示 0或1为竖屏 2或3为横屏
+#define USE_HORIZONTAL 0  //设置横屏或者竖屏显示 0或1为竖屏 2或3为横屏
 
 
 #define LCD_W 240

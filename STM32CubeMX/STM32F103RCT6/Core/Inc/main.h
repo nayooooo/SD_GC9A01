@@ -58,6 +58,8 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
 
+void delay_us(__IO uint32_t delay);
+
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
@@ -99,6 +101,10 @@ void Error_Handler(void);
 #define LCD_DB6_GPIO_Port GPIOC
 #define LCD_DB7_Pin GPIO_PIN_7
 #define LCD_DB7_GPIO_Port GPIOC
+#define CTP_SCL_Pin GPIO_PIN_6
+#define CTP_SCL_GPIO_Port GPIOB
+#define CTP_SDA_Pin GPIO_PIN_7
+#define CTP_SDA_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

@@ -2,10 +2,6 @@
 #include "lcdfont.h"
 #include "string.h"
 
-// 屏幕显示缓冲
-#define LCD_DATAOUT_BUFF_SIZE		(240)
-static u16 lcd_dataout_buff[LCD_DATAOUT_BUFF_SIZE] = { 0 };
-
 
 /******************************************************************************
       函数说明：显示数字
@@ -31,17 +27,9 @@ void LCD_Fill(u16 xsta,u16 ysta,u16 xend,u16 yend,u16 color)
 {          
 	u16 i,j;
 	u32 total_num = (xend - xsta + 1) * (yend - ysta + 1);
-	u32 wrote_num = 0;
-	LCD_Area_Set(xsta,ysta,xend-1,yend-1);//设置显示范围
-	for (u32 n = 0; n < sizeof(lcd_dataout_buff); n++) {
-		lcd_dataout_buff[n] = color;
-	}
-	while (total_num - wrote_num >= sizeof(lcd_dataout_buff)) {
-		LCD_WR_DATA_Faster(lcd_dataout_buff, sizeof(lcd_dataout_buff));
-		wrote_num += sizeof(lcd_dataout_buff);
-	}
-	if (total_num - wrote_num > 0) {
-		LCD_WR_DATA_Faster(lcd_dataout_buff, total_num - wrote_num);
+	LCD_Area_Set(xsta,ysta,xend,yend);//设置显示范围
+	for (u32 i = 0; i < total_num; i++) {
+		LCD_WR_DATA(color);
 	}
 }
 

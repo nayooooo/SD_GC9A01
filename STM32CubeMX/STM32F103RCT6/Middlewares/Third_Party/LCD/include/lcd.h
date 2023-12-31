@@ -2,6 +2,7 @@
 #define __LCD_H		
 #include "main.h"
 #include "lcd_init.h"
+#include "CST816S.h"
 
 
 void LCD_Fill(u16 xsta,u16 ysta,u16 xend,u16 yend,u16 color);//指定区域填充颜色

@@ -18,8 +18,6 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "i2c.h"
-#include "spi.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
@@ -32,6 +30,7 @@
 #include "malloc.h"
 
 #include "ws2812b.h"
+#include "lcd.h"
 
 #include "at_user.h"
 #include "lvgl.h"
@@ -101,9 +100,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_SPI1_Init();
   MX_USART1_UART_Init();
-  MX_I2C1_Init();
   MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
   
@@ -138,6 +135,11 @@ int main(void)
   lv_obj_set_pos(btn, 50, 50);
   lv_obj_t* arc = lv_arc_create(scr);
   lv_obj_set_pos(arc, 50, 100);
+
+//  LCD_Init();
+//  LCD_Fill(0, 0, (u16)LCD_W-1, (u16)LCD_H-1, BLACK);
+//  CST816S_Init();
+//  CST816S_test();
   
   while (1)
   {
@@ -194,6 +196,38 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+#define CPU_FREQUENCY_MHZ    72		// STM32Ê±ÖÓÖ÷Æµ
+void delay_us(__IO uint32_t delay)
+{
+    int last, curr, val;
+    int temp;
+
+    while (delay != 0)
+    {
+        temp = delay > 900 ? 900 : delay;
+        last = SysTick->VAL;
+        curr = last - CPU_FREQUENCY_MHZ * temp;
+        if (curr >= 0)
+        {
+            do
+            {
+                val = SysTick->VAL;
+            }
+            while ((val < last) && (val >= curr));
+        }
+        else
+        {
+            curr += CPU_FREQUENCY_MHZ * 1000;
+            do
+            {
+                val = SysTick->VAL;
+            }
+            while ((val <= last) || (val > curr));
+        }
+        delay -= temp;
+    }
+}
 
 /* USER CODE END 4 */
 

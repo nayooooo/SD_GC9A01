@@ -1,5 +1,5 @@
-uss/lcd.o: ..\Middlewares\Third_Party\LCD\lcd.c \
-  ..\Middlewares\Third_Party\LCD\include\lcd.h ..\Core\Inc\main.h \
+uss/ctiic.o: ..\Middlewares\Third_Party\LCD\CTIIC.c \
+  ..\Middlewares\Third_Party\LCD\include\CTIIC.h ..\Core\Inc\main.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h \
   ..\Core\Inc\stm32f1xx_hal_conf.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h \
@@ -28,9 +28,4 @@ uss/lcd.o: ..\Middlewares\Third_Party\LCD\lcd.c \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_pwr.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h \
-  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h \
-  ..\Middlewares\Third_Party\LCD\include\lcd_init.h \
-  ..\Middlewares\Third_Party\LCD\include\CST816S.h \
-  ..\Middlewares\Third_Party\LCD\include\CTIIC.h \
-  ..\Middlewares\Third_Party\LCD\include\lcdfont.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h
+  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h
