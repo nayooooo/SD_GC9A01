@@ -12,9 +12,24 @@
 
 #define CTP_MAX_TOUCH 2       
 
-#define  FT_DEVIDE_MODE 0x00	   // CST816模式控制寄存器
-#define  GT_ADDR_REG    0x02     //触摸状态寄存器
-#define  CST816S_ID     0xA7     //CST816SID寄存器
+//CST816寄存器
+#define GestureID			0x01		//手势寄存器
+#define FingerNum			0x02		//手指数量
+#define XposH				0x03		//x高四位
+#define XposL				0x04		//x低八位
+#define YposH				0x05		//y高四位
+#define YposL				0x06		//y低八位
+#define ChipID				0xA7		//芯片型号
+#define	MotionMask		    0xEC		//触发动作
+#define AutoSleepTime	    0xF9		//自动休眠
+#define IrqCrl				0xFA		//中断控制
+#define AutoReset			0xFB		//无手势休眠
+#define LongPressTime	    0xFC		//长按休眠
+#define DisAutoSleep	    0xFE		//使能低功耗模式
+
+#define CST816S_ID			ChipID     //CST816SID寄存器
+#define FT_DEVIDE_MODE		0x00	   // CST816模式控制寄存器
+#define GT_ADDR_REG			FingerNum     //触摸状态寄存器
 
 typedef struct
 {

@@ -130,11 +130,9 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   
-  lv_obj_t* btn = lv_btn_create(scr);
-  lv_obj_set_size(btn, 40, 20);
-  lv_obj_set_pos(btn, 50, 50);
-  lv_obj_t* arc = lv_arc_create(scr);
-  lv_obj_set_pos(arc, 50, 100);
+  lv_obj_t* sw = lv_switch_create(scr);
+  lv_obj_set_size(sw, 100, 50);
+  lv_obj_set_pos(sw, 50, 50);
 
 //  LCD_Init();
 //  LCD_Fill(0, 0, (u16)LCD_W-1, (u16)LCD_H-1, BLACK);
