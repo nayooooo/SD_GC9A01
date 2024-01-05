@@ -40,11 +40,15 @@ typedef struct
 	u8  sta;              //´¥Ãþ×´Ì¬  
 }_m_tp_dev;
 
+#define TP_DEV_STA_POS0_TOUCHED			(0x01)
+#define TP_DEV_STA_POS0_LONGTOUCH		(0x02)
+#define TP_DEV_STA_POS1_TOUCHED			(0x10)
+#define TP_DEV_STA_POS1_LONGTOUCH		(0x20)
+
 
 u8 CST816S_WR_DATA(u8 addr,u8 data);
 u8 CST816S_RD_DATA(u8 addr,u8 len,u8 *value);
 void  CST816S_Init(void);
 u8  CST816S_Scan(u8 mode);
-void CST816S_test(void);
 #endif
 

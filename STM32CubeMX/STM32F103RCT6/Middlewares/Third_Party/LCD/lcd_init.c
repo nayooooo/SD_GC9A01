@@ -5,6 +5,12 @@
 #include <stdio.h>
 #include <string.h>
 #endif
+static u8 use_horizontal = (u8)USE_HORIZONTAL;
+
+u8 get_lcd_horizontal(void)
+{
+	return use_horizontal;
+}
 
 static void delay_ms(u32 nms)
 {
@@ -234,20 +240,22 @@ void LCD_Init(void)
 	pos = strstr(pos, "="); pos++;
 	int lcd_horizontal;
 	sscanf(pos, "%d", &lcd_horizontal);
+	use_horizontal = (u8)lcd_horizontal;
 	if (lcd_horizontal==0)LCD_WR_DATA8(0x08);
 	else if(lcd_horizontal==1)LCD_WR_DATA8(0xC8);
 	else if(lcd_horizontal==2)LCD_WR_DATA8(0x68);
 	else LCD_WR_DATA8(0xA8);
 	if (0) {
 	lcd_fatfs_config_error:
+		use_horizontal = 0;
 		LCD_WR_DATA8(0x08);
 	}
 	f_close(&fil);
 	f_mount(&fs, "sd", 0);
 #else
-	if(USE_HORIZONTAL==0)LCD_WR_DATA8(0x08);
-	else if(USE_HORIZONTAL==1)LCD_WR_DATA8(0xC8);
-	else if(USE_HORIZONTAL==2)LCD_WR_DATA8(0x68);
+	if(use_horizontal==0)LCD_WR_DATA8(0x08);
+	else if(use_horizontal==1)LCD_WR_DATA8(0xC8);
+	else if(use_horizontal==2)LCD_WR_DATA8(0x68);
 	else LCD_WR_DATA8(0xA8);
 #endif
 

@@ -6,7 +6,6 @@
 // 如果使用FATFS，此宏定义无效
 #define USE_HORIZONTAL 0  //设置横屏或者竖屏显示 0或1为竖屏 2或3为横屏
 
-
 #define LCD_W 240
 #define LCD_H 240
 
@@ -29,7 +28,7 @@
 #define	LCD_RD_Clr()	LCD_RD_GPIO_Port->BRR=LCD_RD_Pin
 #define	LCD_BLK_Clr()	LCD_BLK_GPIO_Port->BRR=LCD_BLK_Pin
 
-
+u8 get_lcd_horizontal(void);
 
 void LCD_WR_DATA8(u8 dat);//写入一个字节
 void LCD_WR_DATA8_Faster(u8* dat, u32 size);

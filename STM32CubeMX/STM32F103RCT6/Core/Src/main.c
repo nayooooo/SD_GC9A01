@@ -30,7 +30,8 @@
 #include "malloc.h"
 
 #include "ws2812b.h"
-#include "lcd.h"
+//#include "lcd.h"
+//extern _m_tp_dev tp_dev;
 
 #include "at_user.h"
 #include "lvgl.h"
@@ -137,13 +138,14 @@ int main(void)
 //  LCD_Init();
 //  LCD_Fill(0, 0, (u16)LCD_W-1, (u16)LCD_H-1, BLACK);
 //  CST816S_Init();
-//  CST816S_test();
   
   while (1)
   {
 	  at.handleAuto(&at);
 	  
 	  lv_timer_handler();
+	  
+//	  tp_dev.scan(0);
 	  
 	  HAL_Delay(1);
 	  

@@ -74,65 +74,74 @@ void  CST816S_Init(void)
 }
 
 
-//#include <stdio.h>
+#include <stdio.h>
 u8 CST816S_Scan(u8 mode)
 {
+	static u8 t = 0;
 	u8 res=0;
 	u8 data[4] = {0};
-	CST816S_RD_DATA(XposH,4,data);
-	u16 x = (u16)((data[0]&0x0F)<<8)|data[1];
-	u16 y = (u16)((data[2]&0x0F)<<8)|data[3];
+	u16 x, y;
+	u8 finger_num, gesture_id;
+	t++;
+	if (t % 10) {
+		return 1;
+	} else {
+		t = 0;
+	}
+	if ((tp_dev.sta & TP_DEV_STA_POS0_TOUCHED)
+		&& (tp_dev.sta & TP_DEV_STA_POS1_TOUCHED)) {
+		return 2;
+	}
+	
+	CST816S_RD_DATA(FingerNum,1,&finger_num);
+	CST816S_RD_DATA(GestureID,1,&gesture_id);
+	if (gesture_id == 0x0C) tp_dev.sta |= TP_DEV_STA_POS0_LONGTOUCH;
+	if (finger_num) {
+		CST816S_RD_DATA(XposH,4,data);
+		x = (u16)((data[0]&0x0F)<<8)|data[1];
+		y = (u16)((data[2]&0x0F)<<8)|data[3];
+	} else {
+		if (!(tp_dev.sta & TP_DEV_STA_POS0_LONGTOUCH)) return 3;
+		x = tp_dev.x[0];
+		y = tp_dev.y[0];
+	}
 	if (x < LCD_W && y < LCD_H) {
-		if (tp_dev.sta & 0x01) {
+		if (tp_dev.sta & TP_DEV_STA_POS0_TOUCHED) {
 			tp_dev.x[1] = tp_dev.x[0];
 			tp_dev.y[1] = tp_dev.y[0];
-			tp_dev.x[0] = x;
-			tp_dev.y[0] = y;
-			tp_dev.sta |= 0x02;
-		} else {
-			tp_dev.x[0] = x;
-			tp_dev.y[0] = y;
-			tp_dev.sta |= 0x01;
+			tp_dev.sta |= TP_DEV_STA_POS1_TOUCHED;
 		}
-//		printf("x: %d, y: %d\r\n", (int)tp_dev.x[0], (int)tp_dev.y[0]);
+		switch (get_lcd_horizontal())
+		{
+			case 0:
+				tp_dev.x[0] = LCD_W - x;
+				tp_dev.y[0] = y;
+				break;
+			case 1:
+				tp_dev.x[0] = x;
+				tp_dev.y[0] = LCD_H - y;
+				break;
+			case 2:
+				tp_dev.x[0] = x;
+				tp_dev.y[0] = y;
+				break;
+			case 3:
+				tp_dev.x[0] = LCD_W - x;
+				tp_dev.y[0] = LCD_H - y;
+				break;
+			default:
+				return 4;
+		}
+		if ((!(tp_dev.sta & TP_DEV_STA_POS0_LONGTOUCH)) || (gesture_id == 0x00)) {
+			tp_dev.sta |= TP_DEV_STA_POS0_TOUCHED;
+			printf("[sta: 0x%X] x: %d, y: %d\r\n", tp_dev.sta, (int)tp_dev.x[0], (int)tp_dev.y[0]);
+		} else return 5;
 	} else {
-		tp_dev.sta &= ~0x01;
+		tp_dev.sta &= ~0xFF;
 		tp_dev.x[0] = 0;
 		tp_dev.y[0] = 0;
 	}
 	return res;
-}
-
-
-
-void CST816S_test(void)
-{
-	u8 t=0; 	    
- 	u16 lastpos[2][2];		//最后一次的数据 
-	LCD_Fill(0,0,LCD_W-1,LCD_H-1,WHITE);
-	while(1)
-	{   
-		tp_dev.scan(0);
-		for(t=0;t<CTP_MAX_TOUCH;t++)
-		{
-			if((tp_dev.sta&(1<<t)))//判断是否有点触摸？
-			{    
-				HAL_Delay(1);
-				if(tp_dev.x[t]<LCD_W&&tp_dev.y[t]<LCD_H)//在LCD范围内
-				{
-					if(lastpos[t][0]==0XFFFF)
-					{
-						lastpos[t][0] = tp_dev.x[t];
-						lastpos[t][1] = tp_dev.y[t];
-					}
-					LCD_DrawLine(lastpos[t][0],lastpos[t][1],tp_dev.x[t],tp_dev.y[t],POINT_COLOR_TBL[t]);
-					lastpos[t][0]=tp_dev.x[t];
-					lastpos[t][1]=tp_dev.y[t];
-				}
-			}else {lastpos[t][0]=0XFFFF;}
-		}
-		HAL_Delay(5);
-	}	
 }
 
 

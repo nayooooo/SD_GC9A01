@@ -31,4 +31,5 @@ uss/cst816s.o: ..\Middlewares\Third_Party\LCD\CST816S.c \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h \
   ..\Middlewares\Third_Party\LCD\include\CTIIC.h \
   ..\Middlewares\Third_Party\LCD\include\lcd.h \
-  ..\Middlewares\Third_Party\LCD\include\lcd_init.h
+  ..\Middlewares\Third_Party\LCD\include\lcd_init.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h
