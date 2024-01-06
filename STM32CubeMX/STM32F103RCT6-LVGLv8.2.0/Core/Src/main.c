@@ -30,8 +30,6 @@
 #include "malloc.h"
 
 #include "ws2812b.h"
-//#include "lcd.h"
-//extern _m_tp_dev tp_dev;
 
 #include "at_user.h"
 #include "lvgl.h"
@@ -154,18 +152,12 @@ int main(void)
   lv_led_set_color(led, lv_color_hex(0x221199));
   lv_obj_set_style_bg_color(led, lv_color_hex(0xD3D3D3), 0xFFFFFFFF);
   lv_obj_add_event_cb(sw, sw_event_cb, LV_EVENT_VALUE_CHANGED, led);
-
-//  LCD_Init();
-//  LCD_Fill(0, 0, (u16)LCD_W-1, (u16)LCD_H-1, BLACK);
-//  CST816S_Init();
   
   while (1)
   {
 	  at.handleAuto(&at);
 	  
 	  lv_timer_handler();
-	  
-//	  tp_dev.scan(0);
 	  
 	  HAL_Delay(1);
 	  
