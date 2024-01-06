@@ -66,6 +66,19 @@ static lv_obj_t* scr = NULL;
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
 
+void sw_event_cb(struct _lv_event_t * e)
+{
+	if (e->code == LV_EVENT_VALUE_CHANGED) {
+		lv_obj_t* led = (lv_obj_t*)e->user_data;
+		uint8_t led_state = lv_led_get_brightness(led);
+		if (led_state <= LV_LED_BRIGHT_MIN) {
+			lv_led_on(led);
+		} else {
+			lv_led_off(led);
+		}
+	}
+}
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -134,6 +147,11 @@ int main(void)
   lv_obj_t* sw = lv_switch_create(scr);
   lv_obj_set_size(sw, 100, 50);
   lv_obj_set_pos(sw, 50, 50);
+  lv_obj_t* led = lv_led_create(scr);
+  lv_obj_set_size(led, 50, 50);
+  lv_obj_set_pos(led, 50, 120);
+  lv_led_off(led);
+  lv_obj_add_event_cb(sw, sw_event_cb, LV_EVENT_VALUE_CHANGED, led);
 
 //  LCD_Init();
 //  LCD_Fill(0, 0, (u16)LCD_W-1, (u16)LCD_H-1, BLACK);
