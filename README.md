@@ -1,5 +1,5 @@
-# SD_GC9A01
+# SD_GC9A01_CST816S
 
-SD_GC9A01 which is a LCD demo with SD card.
+SD_GC9A01_CST816S which is a LCD demo with SD card.
 
-Just for STM32F103C8T6.
+Just for STM32F103RCT6.
