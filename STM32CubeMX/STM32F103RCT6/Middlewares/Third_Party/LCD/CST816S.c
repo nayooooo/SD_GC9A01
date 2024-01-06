@@ -1,7 +1,8 @@
 #include "CST816S.h"
 #include "lcd.h"
 
-const u16 POINT_COLOR_TBL[CTP_MAX_TOUCH]={RED,GREEN}; //触摸笔颜色
+//const u16 POINT_COLOR_TBL[CTP_MAX_TOUCH]={RED,GREEN}; //触摸笔颜色
+const u16 POINT_COLOR_TBL[CTP_MAX_TOUCH]={RED}; //触摸笔颜色
 const u16 TPX[]={0x03,0x09}; //触摸地址
 _m_tp_dev tp_dev=
 {
@@ -74,70 +75,62 @@ void  CST816S_Init(void)
 }
 
 
-#include <stdio.h>
+//#include <stdio.h>
 u8 CST816S_Scan(u8 mode)
 {
-	static u8 t = 0;
 	u8 res=0;
-	u8 data[4] = {0};
+	u8 data[6] = {0};
 	u16 x, y;
-	u8 finger_num, gesture_id;
-	t++;
-	if (t % 10) {
+	
+	if (tp_dev.sta & TP_DEV_STA_POS0_TOUCHED) {
 		return 1;
-	} else {
-		t = 0;
 	}
-	if ((tp_dev.sta & TP_DEV_STA_POS0_TOUCHED)
-		&& (tp_dev.sta & TP_DEV_STA_POS1_TOUCHED)) {
+	
+	CST816S_RD_DATA(GestureID,6,data);
+	if (data[1]) {
+		x = (u16)((data[2]&0x0F)<<8)|data[3];
+		y = (u16)((data[4]&0x0F)<<8)|data[5];
+	} else {
+		tp_dev.gid[0] = GID_NO_GESTURES;
 		return 2;
 	}
 	
-	CST816S_RD_DATA(FingerNum,1,&finger_num);
-	CST816S_RD_DATA(GestureID,1,&gesture_id);
-	if (gesture_id == 0x0C) tp_dev.sta |= TP_DEV_STA_POS0_LONGTOUCH;
-	if (finger_num) {
-		CST816S_RD_DATA(XposH,4,data);
-		x = (u16)((data[0]&0x0F)<<8)|data[1];
-		y = (u16)((data[2]&0x0F)<<8)|data[3];
-	} else {
-		if (!(tp_dev.sta & TP_DEV_STA_POS0_LONGTOUCH)) return 3;
-		x = tp_dev.x[0];
-		y = tp_dev.y[0];
-	}
-	if (x < LCD_W && y < LCD_H) {
-		if (tp_dev.sta & TP_DEV_STA_POS0_TOUCHED) {
-			tp_dev.x[1] = tp_dev.x[0];
-			tp_dev.y[1] = tp_dev.y[0];
-			tp_dev.sta |= TP_DEV_STA_POS1_TOUCHED;
-		}
+	// 保存得到的数据
+	if (x < LCD_W && y < LCD_H) {  // 数据正常
 		switch (get_lcd_horizontal())
 		{
 			case 0:
+				if (data[0] == GID_SLIDE_UP) tp_dev.gid[0] = GID_SLIDE_DOWN;
+				else if (data[0] == GID_SLIDE_DOWN) tp_dev.gid[0] = GID_SLIDE_UP;
+				else if (data[0] == GID_SLIDE_LEFT) tp_dev.gid[0] = GID_SLIDE_RIGHT;
+				else if (data[0] == GID_SLIDE_RIGHT) tp_dev.gid[0] = GID_SLIDE_LEFT;
+				else tp_dev.gid[0] = data[0];
 				tp_dev.x[0] = LCD_W - x;
 				tp_dev.y[0] = y;
 				break;
 			case 1:
+				tp_dev.gid[0] = data[0];
 				tp_dev.x[0] = x;
 				tp_dev.y[0] = LCD_H - y;
 				break;
 			case 2:
+				tp_dev.gid[0] = data[0];
 				tp_dev.x[0] = x;
 				tp_dev.y[0] = y;
 				break;
 			case 3:
+				tp_dev.gid[0] = data[0];
 				tp_dev.x[0] = LCD_W - x;
 				tp_dev.y[0] = LCD_H - y;
 				break;
 			default:
-				return 4;
+				tp_dev.gid[0] = GID_NO_GESTURES;
+				return 3;
 		}
-		if ((!(tp_dev.sta & TP_DEV_STA_POS0_LONGTOUCH)) || (gesture_id == 0x00)) {
-			tp_dev.sta |= TP_DEV_STA_POS0_TOUCHED;
-			printf("[sta: 0x%X] x: %d, y: %d\r\n", tp_dev.sta, (int)tp_dev.x[0], (int)tp_dev.y[0]);
-		} else return 5;
-	} else {
-		tp_dev.sta &= ~0xFF;
+		tp_dev.sta |= TP_DEV_STA_POS0_TOUCHED;
+//		printf("[sta: 0x%02X] x: %d, y: %d\r\n", tp_dev.gid[0], (int)tp_dev.x[0], (int)tp_dev.y[0]);
+	} else {  // 数据异常
+		tp_dev.gid[0] = GID_NO_GESTURES;
 		tp_dev.x[0] = 0;
 		tp_dev.y[0] = 0;
 	}

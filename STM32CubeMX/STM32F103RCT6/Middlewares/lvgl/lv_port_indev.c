@@ -112,7 +112,7 @@ static bool touchpad_is_pressed(void)
     /*Your code comes here*/
 	tp_dev.scan(0);
 	if (tp_dev.sta & TP_DEV_STA_POS0_TOUCHED) {
-		tp_dev.sta &= ~0xFF;
+		tp_dev.sta &= ~TP_DEV_STA_POS0_TOUCHED;
 		return true;
 	}
 
@@ -124,14 +124,8 @@ static void touchpad_get_xy(int32_t * x, int32_t * y)
 {
     /*Your code comes here*/
 	
-	if (tp_dev.sta & 0x02) {
-		(*x) = (int32_t)tp_dev.x[1];
-		(*y) = (int32_t)tp_dev.y[1];
-	}
-	else {
-		(*x) = (int32_t)tp_dev.x[0];
-		(*y) = (int32_t)tp_dev.y[0];
-	}
+	(*x) = (int32_t)tp_dev.x[0];
+	(*y) = (int32_t)tp_dev.y[0];
 }
 
 #else /*Enable this file at the top*/
